@@ -1,0 +1,28 @@
+{% extends "suit/suit.html" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<div>
+    {% for a in ArticleObj %}
+        <section class="vol">
+            <div class="vol-header">
+                <h1 class="vol-title">{{ a.title }}</h1>
+
+                    <p class="vol-meta">
+                        Time:  <a class="vol-time" href="#">{{ a.timestamp }}</a> 
+                        tag :  <a class="vol-tag" href="#">{{ a.tag }}</a>
+                    </p>
+            </div>
+
+            <div class="post-description">
+                <p>
+                    {{ a.content }}
+                </p>
+            </div>
+        </section>
+    {% endfor %}
+</div>
+</ul class="pure-paginator">{{ PageInfo }}</ul>
+{% endblock %}
+

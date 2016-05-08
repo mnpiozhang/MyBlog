@@ -1,0 +1,84 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.leftpage{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: rgb(0, 172, 86);
+    color: #fff;
+}
+
+.rightcontent{
+	padding: 5em 3em 0;
+    margin-left: 25%;
+}
+
+.header{
+	top: auto;
+	margin: 70% 2em 0;
+    text-align: center;
+}
+
+/*肖像*/
+.portrait {
+    width:130px; 
+    height:100px; 
+    border-radius:60%; 
+    overflow:hidden;
+    border: 5px solid;
+}
+.brand-title{
+	padding: 4px 0;
+	text-align: right;
+	font-size: 3em;
+}
+
+.nav-list {
+	text-align: right;
+    margin: 0;
+    padding: 2px 0;
+    list-style: none;
+}
+.nav-item {
+	text-align: right;
+}
+.nav-item a {
+    background: transparent;
+    border: 2px solid rgb(0, 255, 64);
+    color: #fff;
+    margin-top: 1em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 100%;
+}
+.nav-item a:hover,
+.nav-item a:focus {
+    border: 2px solid rgb(0, 128, 60);
+    text-decoration: none;
+    color:#00ff00;
+}
+.vol {
+    padding-bottom: 2em;
+}
+
+.vol-title{
+	font-family:"Times New Roman",Times,serif;
+	font-weight:bold;
+}
+.vol-meta{
+	color: #999;
+    font-size: 90%;
+    margin: 0;
+}
+
+.vol-tag {
+    margin: 0 0.1em;
+    padding: 0.3em 1em;
+    color: #fff;
+    background: #8080ff;
+    font-size: 80%;
+}
