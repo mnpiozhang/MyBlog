@@ -11,7 +11,10 @@
 
                     <p class="vol-meta">
                         Time:  <a class="vol-time" href="#">{{ a.timestamp }}</a> 
-                        tag :  <a class="vol-tag" href="#">{{ a.tag }}</a>
+						Tag :  
+                        {% for b in a.tag.all %}
+								<a class="vol-tag" href="#">{{ b }}</a>
+                        {% endfor %}
                     </p>
             </div>
 
