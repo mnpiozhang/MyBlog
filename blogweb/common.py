@@ -75,3 +75,19 @@ def page_div(page,all_page_count):
     pagelist.append("<a class='pure-button' href='/blog/index/%d'>尾页</a>" %(all_page_count))
     #将列表类型的页面转换成字符串并且转义html标签能在前台显示
     return mark_safe(' '.join(pagelist))
+
+def article_div(id,all_article_count):
+    '''
+    id 当前文章id号   int
+    all_article_count 总文章数目 int
+    '''
+    #初始化上一篇下一篇文件分页为列表类型
+    pagelist = []
+    if id == 1:
+        pagelist.append("<a class='pure-button prev' href='/blog/show/%d'>上一篇</a>" %(id+1))
+    elif id == all_article_count:
+        pagelist.append("<a class='pure-button next' href='/blog/show/%d'>下一篇</a>" %(id-1))
+    else:
+        pagelist.append("<a class='pure-button prev' href='/blog/show/%d'>上一篇</a>" %(id+1))
+        pagelist.append("<a class='pure-button next' href='/blog/show/%d'>下一篇</a>" %(id-1))
+    return mark_safe(' '.join(pagelist))
