@@ -61,8 +61,18 @@
     text-decoration: none;
     color:#00ff00;
 }
+
+.pagediv{
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 2em;
+}
 .vol {
     padding-bottom: 2em;
+    /*background: rgb(0, 172, 86);*/
+    width:  calc(60% + 10px); 
+    margin: 0 auto;
+
 }
 
 .vol-title{
@@ -81,4 +91,28 @@
     color: #fff;
     background: #8080ff;
     font-size: 80%;
+}
+.article-title{
+    padding-top: 0.3rem;
+	display: block;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+
+}
+.article-header{
+	content: '';
+    display: block;
+    border-bottom: 1px solid #999999;
+    margin-top: 1.3rem;
+    text-align: center;
+	padding-bottom: 1em;
+}
+.article-detial{
+	margin: 0 auto;
+    width: 25cm;
+}
+.article-description{
+	padding-bottom: 2em;
+	padding-top: 2em;
 }
