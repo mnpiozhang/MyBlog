@@ -17,7 +17,7 @@
 
             <div class="post-description">
                 <p>
-                    {{ a.content }}
+                    {{ a.content|truncatechars:100}}
                 </p>
             </div>
             <a href="/blog/show/{{ a.id }}" >MORE</a>
