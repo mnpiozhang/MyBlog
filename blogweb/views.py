@@ -19,3 +19,9 @@ def index(request,page):
     ret['ArticleObj'] = ArticleObj
     
     return render_to_response('index.html',ret,context_instance=RequestContext(request))
+
+def showarticle(request,articleId):
+    ret = {'ArticleObj':None}
+    ArticleObj = Article.objects.get(id=articleId)
+    ret['ArticleObj'] = ArticleObj
+    return render_to_response('show.html',ret)
