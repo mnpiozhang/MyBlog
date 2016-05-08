@@ -5,7 +5,7 @@ from blogweb.models import Article
 from django.template.context import RequestContext
 from common  import  Page,page_div,article_div
 # Create your views here.
-def index(request,page):
+def index(request,page=1):
     ret = {'ArticleObj':None,'PageInfo':None}
     try:
         page = int(page)
