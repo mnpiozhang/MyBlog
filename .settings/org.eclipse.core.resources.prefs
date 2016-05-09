@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
 encoding//blogweb/common.py=utf-8
+encoding//blogweb/templatetags/djangomarkdown.py=utf-8
 encoding//blogweb/views.py=utf-8

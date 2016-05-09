@@ -1,5 +1,5 @@
 {% extends "suit/suit.html" %}
-
+{% load djangomarkdown %}
 {% block title %}Blog{% endblock %}
 
 {% block content %}
@@ -17,7 +17,7 @@
             </div>
             <div class="article-description">
                 <p>
-                    {{ ArticleObj.content }}
+                    {{ ArticleObj.content|djangomarkdown }}
                 </p>
        	    </div>
 

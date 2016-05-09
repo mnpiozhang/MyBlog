@@ -1,5 +1,5 @@
 {% extends "suit/suit.html" %}
-
+{% load djangomarkdown %}
 {% block title %}Blog{% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
 
             <div class="post-description">
                 <p>
-                    {{ a.content|truncatechars:100}}
+                    {{ a.content|truncatechars:100|djangomarkdown}}
                 </p>
             </div>
             <a class="btn btn-info" href="/blog/show/{{ a.id }}" >MORE</a>
