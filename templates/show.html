@@ -11,7 +11,7 @@
                         Time:  <a class="vol-time" href="#">{{ ArticleObj.timestamp }}</a> 
 						Tag :  
                         {% for tags in ArticleObj.tag.all %}
-								<a class="vol-tag" href="#">{{ tags }}</a>
+								<a class="vol-tag" href="/blog/tag/{{ tags }}">{{ tags }}</a>
                         {% endfor %}
                     </p>
             </div>

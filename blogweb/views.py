@@ -30,3 +30,18 @@ def showarticle(request,articleId):
     ret['ArticleObj'] = ArticleObj
     ret['articlecontext'] = articlecontext
     return render_to_response('show.html',ret,context_instance=RequestContext(request))
+
+def searchtag(request,tagname):
+    ret = {'ArticleObj':None,'PageInfo':None}
+    #根据Article对象的tag字段多对多对应TagInfo表的tagname字段
+    MatchTagObj = Article.objects.filter(tag__tagname__contains = tagname)
+    AllCount = MatchTagObj.all().count()
+    #分页为首页
+    page = 1
+    PageObj = Page(AllCount,page,4)
+    ArticleObj = MatchTagObj.order_by('-id').all()[PageObj.begin:PageObj.end]
+    pageinfo = page_div(page, PageObj.all_page_count)
+    ret['PageInfo'] = pageinfo
+    ret['ArticleObj'] = ArticleObj
+    return render_to_response('index.html',ret,context_instance=RequestContext(request))
+    
