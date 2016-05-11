@@ -10,12 +10,16 @@
     bottom: 0;
     background: rgb(0, 172, 86);
     color: #fff;
+    
 }
 
 .rightcontent{
 	padding: 5em 3em 0;
     margin-left: 25%;
+    
 }
+
+body { overflow-y: scroll; } 
 
 .header{
 	top: auto;
@@ -116,3 +120,4 @@
 	padding-bottom: 2em;
 	padding-top: 2em;
 }
+
