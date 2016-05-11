@@ -13,7 +13,9 @@
                         Time:  <a class="vol-time" href="#">{{ a.timestamp }}</a> 
 						Tag :  
                         {% for b in a.tag.all %}
-								<a class="label label-success" href="/blog/tag/{{ b }}">{{ b }}</a>
+								<a href="/blog/tag/{{ b }}">
+								<span class="glyphicon glyphicon-tag">{{ b }}</span>
+								</a>
                         {% endfor %}
                     </p>
             </div>
