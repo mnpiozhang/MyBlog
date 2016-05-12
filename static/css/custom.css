@@ -22,6 +22,7 @@
 body { overflow-y: scroll; } 
 
 .header{
+	font-family: 'Microsoft Yahei', sans-serif;
 	top: auto;
 	margin: 70% 2em 0;
     text-align: center;
@@ -36,9 +37,10 @@ body { overflow-y: scroll; }
     border: 5px solid;
 }
 .brand-title{
+	
 	padding: 4px 0;
 	text-align: right;
-	font-size: 3em;
+	font-size: 30px;
 }
 
 .nav-list {
