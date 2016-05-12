@@ -23,8 +23,11 @@
                 <p>
                     {{ a.content|truncatechars:100|djangomarkdown}}
                 </p>
+                <div class="keepright">
+                	<a class="btn btn-info" href="/blog/show/{{ a.id }}" >MORE</a>
+                </div>
             </div>
-            <a class="btn btn-info" href="/blog/show/{{ a.id }}" >MORE</a>
+            
         </section>
     {% endfor %}
 
