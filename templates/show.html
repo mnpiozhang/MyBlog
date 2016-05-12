@@ -9,11 +9,10 @@
                 <h1 class="article-title">{{ ArticleObj.title }}</h1>
 
                     <p class="vol-meta">
-                        Time:  <a class="vol-time" href="#">{{ ArticleObj.timestamp }}</a> 
-						Tag :  
+                        <span class="glyphicon glyphicon-time">{{ ArticleObj.timestamp|date:"Y-m-d H:i" }}</span>
                         {% for tags in ArticleObj.tag.all %}
 								<a  href="/blog/tag/{{ tags }}">
-								<span class="glyphicon glyphicon-tag">{{ tags }}</span>
+								<span class="spacing glyphicon glyphicon-tag">{{ tags }}</span>
 								</a>
 								<a> </a>
                         {% endfor %}

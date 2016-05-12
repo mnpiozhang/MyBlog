@@ -21,6 +21,8 @@
 
 body { overflow-y: scroll; } 
 
+span.spacing { padding-left: 20px; }
+
 .header{
 	font-family: 'Microsoft Yahei', sans-serif;
 	top: auto;

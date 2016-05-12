@@ -10,11 +10,10 @@
                 <h1 class="vol-title">{{ a.title }}</h1>
 
                     <p class="vol-meta">
-                        Time:  <a class="vol-time" href="#">{{ a.timestamp }}</a> 
-						Tag :  
+                        <span class="glyphicon glyphicon-time">{{ a.timestamp|date:"Y-m-d H:i" }}</span>
                         {% for b in a.tag.all %}
 								<a href="/blog/tag/{{ b }}">
-								<span class="glyphicon glyphicon-tag">{{ b }}</span>
+								<span class="spacing glyphicon glyphicon-tag">{{ b }}</span>
 								</a>
                         {% endfor %}
                     </p>
