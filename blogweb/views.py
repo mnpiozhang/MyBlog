@@ -47,7 +47,7 @@ def searchtag(request,tagname):
 
 def aboutme(request):
     ret = {'AboutMeObj':None}
-    AboutMeObj = AboutMe.objects.all()
+    AboutMeObj = AboutMe.objects.get(id=1)
     ret['AboutMeObj'] = AboutMeObj
     return render_to_response('about.html',ret)
     
