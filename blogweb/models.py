@@ -8,7 +8,6 @@ class Article(models.Model):
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add = True)
     tag = models.ManyToManyField('TagInfo',blank = True)
-    
     def __unicode__(self):
         return self.title
     
@@ -16,3 +15,12 @@ class TagInfo(models.Model):
     tagname = models.CharField(max_length = 20)
     def __unicode__(self):
         return self.tagname
+    
+    
+class AboutMe(models.Model):
+    authname = models.CharField(max_length = 20)
+    age = models.IntegerField()
+    work = models.CharField(max_length = 50)
+    introduce = models.TextField()
+    def __unicode__(self):
+        return self.authname

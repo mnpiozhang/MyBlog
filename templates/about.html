@@ -1,0 +1,25 @@
+{% extends "suit/suit.html" %}
+{% load djangomarkdown %}
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<div>
+<div class="article-detial">
+            <div class="article-header">
+                <h1 class="article-title">{{ AboutMeObj.authname }}</h1>
+
+                    <p class="vol-meta">
+                        <div>{{ AboutMeObj.age }}</div>
+                        <div>{{ AboutMeObj.work }}</div>
+                    </p>
+            </div>
+            <div class="article-description">
+                <p>
+                    {{ AboutMeObj.introduce|djangomarkdown }}
+                </p>
+       	    </div>
+
+</div>
+
+{% endblock %}
+

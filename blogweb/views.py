@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #_*_ coding:utf-8 _*_
 from django.shortcuts import render,render_to_response,redirect
-from blogweb.models import Article
+from blogweb.models import Article,AboutMe
 from django.template.context import RequestContext
 from common  import  Page,page_div,article_div
 # Create your views here.
@@ -44,4 +44,11 @@ def searchtag(request,tagname):
     ret['PageInfo'] = pageinfo
     ret['ArticleObj'] = ArticleObj
     return render_to_response('index.html',ret,context_instance=RequestContext(request))
+
+def aboutme(request):
+    ret = {'AboutMeObj':None}
+    AboutMeObj = AboutMe.objects.all()
+    ret['AboutMeObj'] = AboutMeObj
+    return render_to_response('about.html',ret)
+    
     
