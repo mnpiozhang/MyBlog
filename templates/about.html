@@ -5,13 +5,6 @@
 {% block content %}
 <div>
 <div class="article-detial">
-            <div class="article-header">
-                <h1 class="article-title">{{ AboutMeObj.authname }}</h1>
-
-                    <p class="vol-meta">
-                        <div>{{ AboutMeObj.email }}</div>
-                    </p>
-            </div>
             <div class="article-description">
                 <p>
                     {{ AboutMeObj.introduce|djangomarkdown }}

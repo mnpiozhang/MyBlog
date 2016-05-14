@@ -19,7 +19,6 @@ class TagInfo(models.Model):
     
 class AboutMe(models.Model):
     authname = models.CharField(max_length = 20,verbose_name = u'作者名称')
-    email = models.EmailField(blank = True,verbose_name = u'邮箱')
     introduce = models.TextField(blank = True,verbose_name = u'简介')
     def __unicode__(self):
         return self.authname
