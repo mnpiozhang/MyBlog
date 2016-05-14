@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from views import index,showarticle,searchtag,aboutme,archive
+from views import index,showarticle,searchtag,aboutme,archive,tags
 
 urlpatterns = [         
     url(r'^index/(\d*)', index),
@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^tag/(?P<tagname>\w+)/$',searchtag),
     url(r'^about/$',aboutme),
     url(r'^archive/$',archive),
+    url(r'^tag/$',tags)
     
 ]

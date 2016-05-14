@@ -33,7 +33,7 @@ span.spacing { padding-left: 20px; }
 .header{
 	
 	top: auto;
-	margin: 70% 2em 0;
+	margin: 50% 2em 0;
     text-align: center;
 }
 
@@ -156,3 +156,7 @@ span.spacing { padding-left: 20px; }
 .detial{
 	margin: 20px 160px
 }
+
+a.button-xlarge {
+    font-size: 425%;
+        }

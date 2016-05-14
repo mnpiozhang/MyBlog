@@ -1,0 +1,20 @@
+{% extends "suit/suit.html" %}
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<div>
+<section class="vol">
+
+    {% for a in taglst %}
+	<div style="margin: 20px 160px">
+    <a class="button-xlarge pure-button" href="/blog/tag/{{ a.tagname }}" >
+    <div>{{ a.tagname }} {{ a.count }} </div>
+    </a>
+    </div>
+    {% endfor %}
+
+</section>
+</div>
+
+{% endblock %}
+
