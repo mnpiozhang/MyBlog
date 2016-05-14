@@ -1,9 +1,10 @@
 {% extends "suit/suit.html" %}
 {% load djangomarkdown %}
+{% load duoshuo_tags %}
 {% block title %}Blog{% endblock %}
 
 {% block content %}
-<div>
+<div class="detial">
 <div class="article-detial">
             <div class="article-header">
                 <h1 class="article-title">{{ ArticleObj.title }}</h1>
@@ -26,6 +27,7 @@
 
 </div>
 
+<div class="duoshuo">{% duoshuo_comments %}</div>
 <div class="pagediv">{{ articlecontext }}</div>
 </div>
 {% endblock %}

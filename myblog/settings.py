@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogweb',
+    'duoshuo',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,3 +112,7 @@ STATICFILES_DIRS = [
     os.path.abspath(os.path.join(BASE_DIR,'static')),
 ]
 #STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR,'static'))
+
+#duoshuo Setting
+DUOSHUO_SECRET = 'xxxxx'
+DUOSHUO_SHORT_NAME = 'xxxxx'
