@@ -51,4 +51,9 @@ def aboutme(request):
     ret['AboutMeObj'] = AboutMeObj
     return render_to_response('about.html',ret)
     
+def archive(request):
+    ret = {'ArticleObj':None}
+    ArticleObj = Article.objects.all().order_by('-timestamp')
+    ret['ArticleObj'] = ArticleObj
+    return render_to_response('archive.html',ret)
     

@@ -96,6 +96,7 @@ span.spacing { padding-left: 20px; }
 .vol-title{
 	font-family:"Times New Roman",Times,serif;
 	font-weight:bold;
+	color: rgb(0, 90, 90);
 }
 .vol-meta{
 	color: #999;
@@ -135,3 +136,19 @@ span.spacing { padding-left: 20px; }
 	padding-top: 2em;
 }
 
+.archive-title{
+	font-weight:bold;
+	font-size: 140%;
+}
+
+.archive-time{
+	margin-right: 20px;
+}
+
+.archive-header{
+    display: block;
+    border-bottom: 1px solid #999999;
+    margin-top: 1.7rem;
+    text-align: center;
+	padding-bottom: 50px;
+}

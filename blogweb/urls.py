@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from views import index,showarticle,searchtag,aboutme
+from views import index,showarticle,searchtag,aboutme,archive
 
 urlpatterns = [         
     url(r'^index/(\d*)', index),
     url(r'^show/(\d+)/$',showarticle),
     url(r'^tag/(?P<tagname>\w+)/$',searchtag),
     url(r'^about/$',aboutme),
+    url(r'^archive/$',archive),
+    
 ]
