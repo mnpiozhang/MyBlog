@@ -1,0 +1,7 @@
+Django==1.8.7
+duoshuo-python-sdk==0.1
+gunicorn==19.4.5
+Markdown==2.6.6
+MySQL-python==1.2.5
+PyJWT==1.4.0
+requests==2.10.0
