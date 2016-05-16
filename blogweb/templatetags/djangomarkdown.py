@@ -13,7 +13,8 @@ register = template.Library()
 @stringfilter
 def djangomarkdown(value):
     return mark_safe(markdown.markdown(force_unicode(value),
-                                        extensions=["markdown.extensions.codehilite"]
+                                        #extensions=["markdown.extensions.codehilite"]
+                                         ['codehilite']
                                         )
                      )
     '''
