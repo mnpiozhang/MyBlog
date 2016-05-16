@@ -24,9 +24,20 @@ def index(request,page=1):
 def showarticle(request,articleId):
     ret = {'ArticleObj':None}
     ArticleObj = Article.objects.get(id=articleId)
-    AllCount = Article.objects.all().count()
-    #articleId是unicode类型需转成int
-    articlecontext = article_div(int(articleId),AllCount)
+    #上一篇的文档对象，由于文档展示排序是倒叙，所以上一篇id正常的未删除任何文章的话就是加一,如果上一篇不存在，则赋值空
+    try:
+        PreviousArticleObj = Article.objects.order_by('id').filter(id__gt=articleId)[0:1].get()
+    except:
+        PreviousArticleObj = None
+    #下一篇的文档对象，由于文档展示排序是倒叙，所以下一篇id正常的未删除任何文章的话就是减一,如果下一篇不存在，则赋值空
+    try:
+        NextArticleObj = Article.objects.order_by('-id').filter(id__lt=articleId)[0:1].get()
+    except:
+        NextArticleObj = None
+    #print PreviousArticleObj.id
+    #print NextArticleObj.id
+
+    articlecontext = article_div(PreviousArticleObj,NextArticleObj)
     ret['ArticleObj'] = ArticleObj
     ret['articlecontext'] = articlecontext
     return render_to_response('show.html',ret,context_instance=RequestContext(request))
