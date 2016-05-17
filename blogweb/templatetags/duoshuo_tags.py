@@ -3,18 +3,26 @@ from django import template
 from django.conf import settings
 from django.template import Library, Node
 
+
 DUOSHUO_SHORT_NAME = getattr(settings, "DUOSHUO_SHORT_NAME", None)
 DUOSHUO_SECRET = getattr(settings, "DUOSHUO_SECRET", None)
 
 register = Library()
 
 class DuoshuoCommentsNode(Node):
-    def __init__(self, short_name=DUOSHUO_SHORT_NAME):
+    def __init__(self,article_id,article_title,short_name=DUOSHUO_SHORT_NAME):
+        self.article_id = template.Variable(article_id)
+        self.article_title = template.Variable(article_title)
         self.short_name = short_name
-
+        
+        
     def render(self, context):
+        #根据上下文转换为真实的变量内容
+        actual_article_id = self.article_id.resolve(context)        
+        actual_article_title = self.article_title.resolve(context)
+
         code = '''<!-- Duoshuo Comment BEGIN -->
-        <div class="ds-thread"></div>
+        <div class="ds-thread" data-thread-key="%s" data-title="%s"></div>
         <script type="text/javascript">
         var duoshuoQuery = {short_name:"%s"};
         (function() {
@@ -26,15 +34,18 @@ class DuoshuoCommentsNode(Node):
              || document.getElementsByTagName('body')[0]).appendChild(ds);
         })();
         </script>
-        <!-- Duoshuo Comment END -->''' % self.short_name
+        <!-- Duoshuo Comment END -->''' % (actual_article_id,actual_article_title,self.short_name)
         return code
     
 def duoshuo_comments(parser, token):
-    short_name = token.contents.split()   
+    print token
+    #将文章id号和文章标题作为模版变量传入标签
+    short_name,article_id,article_title= token.contents.split()
+
     if DUOSHUO_SHORT_NAME:
-        return DuoshuoCommentsNode(DUOSHUO_SHORT_NAME)
+        return DuoshuoCommentsNode(article_id,article_title,DUOSHUO_SHORT_NAME)
     elif len(short_name) == 2:
-        return DuoshuoCommentsNode(short_name[1])
+        return DuoshuoCommentsNode(article_id,article_title,short_name[1])
     else:
         raise template.TemplateSyntaxError, "duoshuo_comments tag takes SHORT_NAME as exactly one argument"
 duoshuo_comments = register.tag(duoshuo_comments)
