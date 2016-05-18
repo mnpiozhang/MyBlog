@@ -4,6 +4,7 @@ from django.shortcuts import render,render_to_response,redirect
 from blogweb.models import Article,AboutMe,TagInfo
 from django.template.context import RequestContext
 from common  import  Page,page_div,article_div
+from collections import OrderedDict
 # Create your views here.
 def index(request,page=1):
     ret = {'ArticleObj':None,'PageInfo':None}
@@ -63,9 +64,18 @@ def aboutme(request):
     return render_to_response('about.html',ret)
     
 def archive(request):
-    ret = {'ArticleObj':None}
-    ArticleObj = Article.objects.all().order_by('-timestamp')
-    ret['ArticleObj'] = ArticleObj
+    ret = {'ArchiveDict':None}
+    tmpArchiveDict = OrderedDict()
+    ArticleObjList = []
+    ArticleDate = Article.objects.dates('timestamp','month',order='DESC')
+    for i in ArticleDate:
+        ArticleObj = Article.objects.filter(timestamp__year=i.year).filter(timestamp__month=i.month)
+        ArticleObjList.append(ArticleObj)
+    #创建有序字典序列
+    tmpArchiveDict = OrderedDict(zip(ArticleDate,ArticleObjList))
+    print tmpArchiveDict
+    ArchiveDict = tmpArchiveDict
+    ret['ArchiveDict'] = ArchiveDict
     return render_to_response('archive.html',ret)
     
 def tags(request):

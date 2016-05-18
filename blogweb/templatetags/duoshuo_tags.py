@@ -38,7 +38,7 @@ class DuoshuoCommentsNode(Node):
         return code
     
 def duoshuo_comments(parser, token):
-    print token
+    #print token
     #将文章id号和文章标题作为模版变量传入标签
     short_name,article_id,article_title= token.contents.split()
 
