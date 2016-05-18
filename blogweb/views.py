@@ -65,16 +65,13 @@ def aboutme(request):
     
 def archive(request):
     ret = {'ArchiveDict':None}
-    tmpArchiveDict = OrderedDict()
     ArticleObjList = []
     ArticleDate = Article.objects.dates('timestamp','month',order='DESC')
     for i in ArticleDate:
         ArticleObj = Article.objects.filter(timestamp__year=i.year).filter(timestamp__month=i.month)
         ArticleObjList.append(ArticleObj)
     #创建有序字典序列
-    tmpArchiveDict = OrderedDict(zip(ArticleDate,ArticleObjList))
-    print tmpArchiveDict
-    ArchiveDict = tmpArchiveDict
+    ArchiveDict = OrderedDict(zip(ArticleDate,ArticleObjList))
     ret['ArchiveDict'] = ArchiveDict
     return render_to_response('archive.html',ret)
     
