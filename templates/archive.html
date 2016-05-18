@@ -3,9 +3,9 @@
 {% block title %}Archive{% endblock %}
 
 {% block content %}
-<div>
-    {% for k,v in ArchiveDict.items %}
-    
+
+{% for k,v in ArchiveDict.items %}
+<div>    
     	<div class="archives-wrap">{{ k|date:"Y-m" }}</div>
     	{% for i in v %}
         <section class="vol">

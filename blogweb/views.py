@@ -68,7 +68,7 @@ def archive(request):
     ArticleObjList = []
     ArticleDate = Article.objects.dates('timestamp','month',order='DESC')
     for i in ArticleDate:
-        ArticleObj = Article.objects.filter(timestamp__year=i.year).filter(timestamp__month=i.month)
+        ArticleObj = Article.objects.filter(timestamp__year=i.year).filter(timestamp__month=i.month).order_by('-timestamp')
         ArticleObjList.append(ArticleObj)
     #创建有序字典序列
     ArchiveDict = OrderedDict(zip(ArticleDate,ArticleObjList))
