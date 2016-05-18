@@ -6,7 +6,7 @@
 <div>
     {% for k,v in ArchiveDict.items %}
     
-    	{{ k|date:"Y-m" }}
+    	<div class="archives-wrap">{{ k|date:"Y-m" }}</div>
     	{% for i in v %}
         <section class="vol">
             <div class="archive-header">

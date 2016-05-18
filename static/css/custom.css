@@ -168,3 +168,12 @@ span.spacing { padding-left: 20px; }
 a.button-xlarge {
     font-size: 425%;
         }
+        
+.archives-wrap {
+    line-height: 35px;
+    width: 200px;
+    position: absolute;
+    padding-left: 60px;
+    font-size: 30px;
+    font-weight: bold;	
+}
