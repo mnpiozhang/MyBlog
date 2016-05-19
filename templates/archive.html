@@ -5,10 +5,10 @@
 {% block content %}
 
 {% for k,v in ArchiveDict.items %}
-<div>    
+<section>    
     	<div class="archives-wrap">{{ k|date:"Y-m" }}</div>
-    	{% for i in v %}
-        <section class="vol">
+        {% for i in v %}
+        <div class="vol">
             <div class="archive-header">
             <div style="display:inline"> 
                 <div class="archive-title" style="float:left">
@@ -17,12 +17,10 @@
                 <div class="archive-time " style="float:right">{{ i.timestamp |date:"Y-m-d H:i"}}</div>
             </div>
             </div>
-            
-        </section>
+        </div>
         {% endfor %}
-    {% endfor %}
 
-
-</div>
+</section>
+{% endfor %}
 {% endblock %}
 

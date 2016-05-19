@@ -94,6 +94,7 @@ span.spacing { padding-left: 20px; }
 }
 .vol {
     padding-bottom: 2em;
+    padding-left: 45px;
     /*background: rgb(0, 172, 86);*/
     width:  calc(60% + 10px); 
     margin: 0 auto;
@@ -176,4 +177,12 @@ a.button-xlarge {
     padding-left: 60px;
     font-size: 30px;
     font-weight: bold;	
+}
+
+.beian{
+	position: absolute; 
+	bottom: 0;
+	left:50%;
+    margin-left:-110px;
+    display: inline;
 }
