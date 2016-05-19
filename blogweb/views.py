@@ -13,7 +13,7 @@ def index(request,page=1):
     except Exception:
         page = 1
     AllCount = Article.objects.all().count()
-    PageObj = Page(AllCount,page,4)
+    PageObj = Page(AllCount,page,6)
     #更具主键序号倒序排列
     ArticleObj = Article.objects.order_by('-id').all()[PageObj.begin:PageObj.end]
     pageinfo = page_div(page, PageObj.all_page_count)
