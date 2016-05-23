@@ -8,7 +8,9 @@ class Article(models.Model):
     content = models.TextField(verbose_name = u'内容')
     timestamp = models.DateTimeField(auto_now_add = True,verbose_name = u'时间戳')
     tag = models.ManyToManyField('TagInfo',blank = True,verbose_name = u'分类标签')
-    pic = models.ImageField(upload_to = 'pic/%Y/%m/%d',blank = True)
+    pic_height=models.PositiveIntegerField(default = 530)
+    pic_width=models.PositiveIntegerField(default = 530)
+    pic = models.ImageField(upload_to = 'pic/%Y/%m/%d',blank = True,height_field='pic_height', width_field='pic_width')
     def __unicode__(self):
         return self.title
     
