@@ -121,6 +121,19 @@ span.spacing { padding-left: 20px; }
 
 }
 
+
+.vol-index {
+    padding-bottom: 2em;
+    padding-left: 45px;
+    /*background: rgb(0, 172, 86);*/
+    width:  calc(75% + 10px); 
+    margin: 0 auto;
+    
+
+}
+
+
+
 .vol-title{
 	font-family:"Times New Roman",Times,serif;
 	font-weight:bold;
