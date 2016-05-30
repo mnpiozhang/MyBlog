@@ -5,21 +5,20 @@
     font-family: 'Microsoft Yahei', sans-serif;
 }
 
+#layout {
+	padding: 0;
+}
+
 .leftpage{
-    position: fixed;
-    top: 0;
-    bottom: 0;
     background: rgb(0, 150, 75);
     color: #fff;
     
 }
 
-.rightcontent{
-	padding: 5em 1em 0;
-    margin-left: 25%;
-    
-    
+.rightcontent {
+    padding: 2em 1em 0;
 }
+
 
 body { overflow-y: scroll; } 
 
@@ -31,10 +30,9 @@ span.spacing { padding-left: 20px; }
 }
 
 .header{
-	
+	text-align: center;
 	top: auto;
-	margin: 50% 2em 0;
-    text-align: center;
+	margin: 3em auto;
 }
 
 /*肖像*/
@@ -212,9 +210,26 @@ a.button-xlarge {
 }
 
 .beian{
-	position: absolute; 
-	bottom: 0;
-	left:50%;
-    margin-left:-110px;
-    display: inline;
+	top: auto;
+	margin: 45% 2em 0;
+	text-align: center;
+}
+
+@media (min-width: 48em) {
+    .rightcontent {
+		padding: 5em 1em 0;
+    	margin-left: 25%;
+    }
+
+    .header {
+		top: auto;
+		margin: 50% 2em 0;
+    	text-align: center;
+    }
+
+    .leftpage {
+    	position: fixed;
+    	top: 0;
+        bottom: 0;
+    }
 }
