@@ -210,9 +210,17 @@ a.button-xlarge {
 }
 
 .beian{
-	top: auto;
+	/*top: auto;
 	margin: 45% 2em 0;
 	text-align: center;
+	width: 100%;
+	position: absolute;
+	text-align: center;
+	padding-top: 45%;*/
+	
+	position: absolute;
+	text-align: center;
+	width: 100%;
 }
 
 @media (min-width: 48em) {
@@ -232,4 +240,12 @@ a.button-xlarge {
     	top: 0;
         bottom: 0;
     }
+    
+    .beian{
+		position: absolute;
+		bottom: 0;
+		left: 35%;
+		margin-left: -110px;
+		display: inline;
+	}
 }
