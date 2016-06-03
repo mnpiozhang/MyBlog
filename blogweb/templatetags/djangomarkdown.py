@@ -12,15 +12,8 @@ register = template.Library()
 @register.filter(is_safe=True)
 @stringfilter
 def djangomarkdown(value):
-    '''
     return mark_safe(markdown.markdown(force_unicode(value),
-                                        #extensions=["markdown.extensions.codehilite"]
-                                         ['codehilite']
-                                        )
-                     )
-    '''
-    return mark_safe(markdown.markdown(force_unicode(value),
-                                       extensions = ["nl2br","codehilite"],
+                                       extensions = ["nl2br","codehilite","attr_list"],
                                        safe_mode=True,
                                        enable_attributes=False))
     
