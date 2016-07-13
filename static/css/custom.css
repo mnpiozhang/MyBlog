@@ -223,6 +223,13 @@ a.button-xlarge {
 
 }
 
+.tagcloud a {
+	display: inline-block;
+	margin: .2em .4em;
+	opacity: 0.6;
+	font-size:x-large;
+}
+
 @media (min-width: 48em) {
     .rightcontent {
 		padding: 5em 1em 0;

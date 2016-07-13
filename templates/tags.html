@@ -4,15 +4,12 @@
 {% block content %}
 <div>
 <section class="vol">
-
+	<nav class="tagcloud">
     {% for a in taglst %}
-	<div style="margin: 20px 160px">
-    <a class="button-xlarge " href="/blog/tag/{{ a.tagname }}" >
-    <div>{{ a.tagname }} {{ a.count }} </div>
+    <a class="button" href="/blog/tag/{{ a.tagname }}" >{{ a.tagname }}<span>({{ a.count }})</span>
     </a>
-    </div>
     {% endfor %}
-
+	</nav>
 </section>
 </div>
 
