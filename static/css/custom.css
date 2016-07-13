@@ -12,15 +12,19 @@
 .leftpage{
     background: rgb(0, 150, 75);
     color: #fff;
+    box-shadow: 1px 0 5px #888888;
     
 }
 
 .rightcontent {
     padding: 2em 1em 0;
+
 }
 
 
-body { overflow-y: scroll; } 
+body { 
+	overflow-y: scroll;
+} 
 
 span.spacing { padding-left: 20px; }
 
