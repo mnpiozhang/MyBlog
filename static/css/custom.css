@@ -32,6 +32,7 @@ span.spacing { padding-left: 20px; }
 .keepright a:hover{ 
 	text-decoration: none;
 	color: rgb(255, 62, 62);
+	transition: all .3s ease-out;
 }
 
 .header{
@@ -87,6 +88,7 @@ span.spacing { padding-left: 20px; }
     border: 2px solid rgb(0, 255, 60);
     text-decoration: none;
     color:#00ff00;
+    transition: all .3s ease-out;
 }
 
 
@@ -185,8 +187,14 @@ span.spacing { padding-left: 20px; }
 	font-size: 140%;
 }
 
+.archive-title a {
+	color: rgb(0, 90, 90)
+}
+
 .archive-title a:hover {
 	text-decoration: none;
+	color: rgb(98, 208, 204);
+	transition: all .3s ease-out;
 }
 
 .archive-time{
