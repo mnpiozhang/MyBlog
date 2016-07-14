@@ -120,6 +120,11 @@ span.spacing { padding-left: 20px; }
     padding-top: 2em;
     padding-bottom: 2em;
 }
+
+.pagediv a:hover{
+    text-decoration: none;
+}
+
 .vol {
     padding-bottom: 2em;
     padding-left: 45px;
