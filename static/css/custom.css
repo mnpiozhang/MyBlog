@@ -13,6 +13,7 @@
     background: rgb(0, 150, 75);
     color: #fff;
     box-shadow: 1px 0 5px #888888;
+    overflow-y: auto;
     
 }
 
