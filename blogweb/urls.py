@@ -21,7 +21,7 @@ from feeds import ArticlesFeed
 urlpatterns = [         
     url(r'^index/(\d*)', index),
     url(r'^show/(\d+)/$',showarticle),
-    url(r'^tag/(?P<tagname>\w+)/$',searchtag),
+    url(r'^tag/(?P<tagname>\w+)/(?P<page>\d*)$',searchtag),
     url(r'^about/$',aboutme),
     url(r'^archive/$',archive),
     url(r'^tag/$',tags),

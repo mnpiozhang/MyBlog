@@ -16,7 +16,8 @@ def index(request,page=1):
     PageObj = Page(AllCount,page,6)
     #更具主键序号倒序排列
     ArticleObj = Article.objects.order_by('-id').all()[PageObj.begin:PageObj.end]
-    pageinfo = page_div(page, PageObj.all_page_count)
+    pageurl = 'index'
+    pageinfo = page_div(page, PageObj.all_page_count,pageurl)
     ret['PageInfo'] = pageinfo
     ret['ArticleObj'] = ArticleObj
     
@@ -43,16 +44,20 @@ def showarticle(request,articleId):
     ret['articlecontext'] = articlecontext
     return render_to_response('show.html',ret,context_instance=RequestContext(request))
 
-def searchtag(request,tagname):
+def searchtag(request,tagname,page=1):
     ret = {'ArticleObj':None,'PageInfo':None}
     #根据Article对象的tag字段多对多对应TagInfo表的tagname字段
     MatchTagObj = Article.objects.filter(tag__tagname__contains = tagname)
     AllCount = MatchTagObj.all().count()
     #分页为首页
-    page = 1
+    try:
+        page = int(page)
+    except Exception:
+        page = 1
     PageObj = Page(AllCount,page,4)
     ArticleObj = MatchTagObj.order_by('-id').all()[PageObj.begin:PageObj.end]
-    pageinfo = page_div(page, PageObj.all_page_count)
+    pageurl = 'tag' + '/' + tagname
+    pageinfo = page_div(page, PageObj.all_page_count,pageurl)
     ret['PageInfo'] = pageinfo
     ret['ArticleObj'] = ArticleObj
     return render_to_response('index.html',ret,context_instance=RequestContext(request))
