@@ -4,6 +4,14 @@
 
 {% block content %}
 <div>
+
+	{% if TagName %}
+	<section class="vol-index" >
+		<div class="vol-header" style="border-left: 5px solid #333;font-size:35px;text-align: center;">标签: {{ TagName }}</div>
+	</section>
+	{% endif %}
+
+
     {% for a in ArticleObj %}
         <section class="vol-index">
             <div class="vol-header">
