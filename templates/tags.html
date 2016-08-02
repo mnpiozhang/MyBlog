@@ -11,6 +11,60 @@
     {% endfor %}
 	</nav>
 </section>
+
+<script src="http://oato1xm6h.bkt.clouddn.com/echarts.common.min.js"></script>
+<section class="vol">
+    <div id="tagstatistics" style="width: 600px;height:400px;margin-top:50px;"></div>
+</section>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('tagstatistics'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '标签统计'
+            },
+            tooltip: {},
+            legend: {
+                data:['数量']
+            },
+            xAxis: {
+                data: [
+                       {% for a in taglst %}
+                       "{{ a.tagname }}",
+                       {% endfor %}
+                       //"衬衫",
+                       //"羊毛衫",
+                       //"雪纺衫",
+                       //"裤子",
+                       //"高跟鞋",
+                       //"袜子",
+                       ]
+            },
+            yAxis: {},
+            series: [{
+                name: '数量',
+                type: 'bar',
+                data: [
+                       {% for a in taglst %}
+                       {{ a.count }},
+                       {% endfor %}
+                       //5, 
+                       //20, 
+                       //36, 
+                       //10, 
+                       //10, 
+                       //20,
+                       ]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+
 </div>
 
 {% endblock %}
