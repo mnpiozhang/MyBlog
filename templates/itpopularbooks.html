@@ -1,0 +1,21 @@
+{% extends "suit/suit.html" %}
+{% load djangomarkdown %}
+{% block title %}ItBooksTop20{% endblock %}
+
+{% block content %}
+
+{% for k,v in booksdict.items %}
+<section>    
+    	<div class="archives-wrap">{{ k }}</div>
+        <div class="vol">
+            <div class="books-title">
+            	<img src="{{ v.pic }}" style="float:left">
+                <div class="archive-title">
+                <p>{{ v.name }}</p>
+                </div>
+            </div>
+        </div>
+</section>
+{% endfor %}
+{% endblock %}
+

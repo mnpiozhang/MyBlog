@@ -219,6 +219,13 @@ span.spacing { padding-left: 20px; }
 	padding-bottom: 50px;
 }
 
+.books-title{
+    display: block;
+    text-align: left;
+    margin-left: 5px;
+	padding-bottom: 60px;
+}
+
 .detial{
 	margin: 20px 160px
 }

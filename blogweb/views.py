@@ -5,6 +5,9 @@ from blogweb.models import Article,AboutMe,TagInfo
 from django.template.context import RequestContext
 from common  import  Page,page_div,article_div
 from collections import OrderedDict
+import popularbooks as pb
+import json
+
 # Create your views here.
 def index(request,page=1):
     ret = {'ArticleObj':None,'PageInfo':None}
@@ -96,3 +99,16 @@ def tags(request):
     ret['taglst'] = taglst
     #print taglst
     return render_to_response('tags.html',ret)
+
+def tools(request):
+    return render(request,'tools.html')
+
+
+def popularBooks(request):
+    ret = {'booksdict':None}
+    booksTop20 = pb.get_JD_Top20('nbs','internet','week')
+    booksTop20Dict = json.loads(booksTop20,object_pairs_hook = OrderedDict)
+    ret['booksdict'] = booksTop20Dict
+    return render_to_response('itpopularbooks.html',ret)
+
+    
