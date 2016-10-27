@@ -27,5 +27,5 @@ urlpatterns = [
     url(r'^tag/$',tags),
     url(r'^rss/$',ArticlesFeed()),
     url(r'^tools/$',tools),
-    url(r'^itpopularbooks/$',popularBooks)
+    url(r'^tools/itpopularbooks/$',popularBooks)
 ]

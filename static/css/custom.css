@@ -132,9 +132,16 @@ span.spacing { padding-left: 20px; }
     /*background: rgb(0, 172, 86);*/
     width:  calc(60% + 10px); 
     margin: 0 auto;
-    
-
 }
+
+.vol-books {
+    padding-bottom: 50px;
+    padding-left: 15px;
+    /*background: rgb(0, 172, 86);*/
+    width:  calc(60% + 10px); 
+    margin: 0 auto;
+}
+
 
 
 .vol-index {
