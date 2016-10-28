@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 
 class ArticlesFeed(Feed):
     title = "Cloudhu lastest five news"
-    link = "/rss/"
+    link = "/blog/rss/"
     description = "Cloudhu Blog new articles"
 
     def items(self):
