@@ -10,7 +10,7 @@ class ArticlesFeed(Feed):
     description = "Cloudhu Blog new articles"
 
     def items(self):
-        return Article.objects.order_by('-timestamp')[:4]
+        return Article.objects.order_by('-timestamp')[:5]
 
     def item_title(self, item):
         return item.title
