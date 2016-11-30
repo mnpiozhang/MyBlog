@@ -15,10 +15,10 @@ def index(request,page=1):
         page = int(page)
     except Exception:
         page = 1
-    AllCount = Article.objects.all().count()
+    AllCount = Article.objects.filter(status='p').all().count()
     PageObj = Page(AllCount,page,6)
-    #更具主键序号倒序排列
-    ArticleObj = Article.objects.order_by('-id').all()[PageObj.begin:PageObj.end]
+    #根据主键序号倒序排列
+    ArticleObj = Article.objects.filter(status='p').order_by('-id').all()[PageObj.begin:PageObj.end]
     pageurl = 'index'
     pageinfo = page_div(page, PageObj.all_page_count,pageurl)
     ret['PageInfo'] = pageinfo
@@ -31,12 +31,12 @@ def showarticle(request,articleId):
     ArticleObj = Article.objects.get(id=articleId)
     #上一篇的文档对象，由于文档展示排序是倒叙，所以上一篇id正常的未删除任何文章的话就是加一,如果上一篇不存在，则赋值空
     try:
-        PreviousArticleObj = Article.objects.order_by('id').filter(id__gt=articleId)[0:1].get()
+        PreviousArticleObj = Article.objects.order_by('id').filter(id__gt=articleId,status='p')[0:1].get()
     except:
         PreviousArticleObj = None
     #下一篇的文档对象，由于文档展示排序是倒叙，所以下一篇id正常的未删除任何文章的话就是减一,如果下一篇不存在，则赋值空
     try:
-        NextArticleObj = Article.objects.order_by('-id').filter(id__lt=articleId)[0:1].get()
+        NextArticleObj = Article.objects.order_by('-id').filter(id__lt=articleId,status='p')[0:1].get()
     except:
         NextArticleObj = None
     #print PreviousArticleObj.id
@@ -50,7 +50,7 @@ def showarticle(request,articleId):
 def searchtag(request,tagname,page=1):
     ret = {'ArticleObj':None,'PageInfo':None,'TagName':None}
     #根据Article对象的tag字段多对多对应TagInfo表的tagname字段
-    MatchTagObj = Article.objects.filter(tag__tagname__contains = tagname)
+    MatchTagObj = Article.objects.filter(tag__tagname__contains = tagname,status='p')
     AllCount = MatchTagObj.all().count()
     #分页为首页
     try:
@@ -78,9 +78,9 @@ def aboutme(request):
 def archive(request):
     ret = {'ArchiveDict':None}
     ArticleObjList = []
-    ArticleDate = Article.objects.dates('timestamp','month',order='DESC')
+    ArticleDate = Article.objects.filter(status='p').dates('timestamp','month',order='DESC')
     for i in ArticleDate:
-        ArticleObj = Article.objects.filter(timestamp__year=i.year).filter(timestamp__month=i.month).order_by('-timestamp')
+        ArticleObj = Article.objects.filter(timestamp__year=i.year).filter(timestamp__month=i.month).filter(status='p').order_by('-timestamp')
         ArticleObjList.append(ArticleObj)
     #创建有序字典序列
     ArchiveDict = OrderedDict(zip(ArticleDate,ArticleObjList))
@@ -93,7 +93,7 @@ def tags(request):
     taglst = []
     dictemplate = ('tagname','count')
     for i in tagsObj:
-            MatchTagObj = Article.objects.filter(tag__tagname__contains = i.tagname)
+            MatchTagObj = Article.objects.filter(tag__tagname__contains = i.tagname,status='p')
             MatchTagCount = MatchTagObj.all().count()
             taglst.append(dict(zip(dictemplate,(i.tagname,MatchTagCount))))
     ret['taglst'] = taglst

@@ -2,6 +2,11 @@
 #_*_ coding:utf-8 _*_
 from django.db import models
 
+STATUS_CHOICES = (
+                  ('d','Draft'),
+                  ('p','Published'),
+                    )
+
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length = 60,verbose_name = u'标题')
@@ -11,6 +16,7 @@ class Article(models.Model):
     pic_height=models.PositiveIntegerField(default = 530)
     pic_width=models.PositiveIntegerField(default = 530)
     pic = models.ImageField(upload_to = 'pic/%Y/%m/%d',blank = True,height_field='pic_height', width_field='pic_width')
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES,default='d')
     def __unicode__(self):
         return self.title
     
