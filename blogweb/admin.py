@@ -12,7 +12,7 @@ def make_published(self, request, queryset):
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ['title', 'status']
-    ordering = ['title']
+    #ordering = ['title']
     actions = [make_published]
 
 
