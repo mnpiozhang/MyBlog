@@ -66,6 +66,23 @@ def searchtag(request,tagname,page=1):
     ret['TagName'] = tagname
     return render_to_response('index.html',ret,context_instance=RequestContext(request))
 
+def searchtitle(request):
+    if request.method == 'POST':
+        search = request.POST.get('search',None)
+        if search == "":
+            return redirect('/blog/index')
+        ret = {'ArticleObj':None,'PageInfo':None,'Search':None}
+        MatchTagObj = Article.objects.filter(title__contains = search,status='p')
+        ArticleObj = MatchTagObj.order_by('-id').all()
+        if ArticleObj.count() == 0:
+            ret['PageInfo'] = "没有搜索结果"
+        else:
+            ret['PageInfo'] = ""
+        ret['ArticleObj'] = ArticleObj
+        ret['Search'] = search
+        return render_to_response('index.html',ret,context_instance=RequestContext(request))
+    return redirect('/blog/index')
+
 def aboutme(request):
     ret = {'AboutMeObj':None}
     try:

@@ -9,6 +9,10 @@
 	<section class="vol-index" >
 		<div class="vol-header" style="border-left: 5px solid #333;font-size:35px;text-align: center;">标签: {{ TagName }}</div>
 	</section>
+	{% elif Search %}
+	<section class="vol-index" >
+		<div class="vol-header" style="border-left: 5px solid #333;font-size:35px;text-align: center;">搜索: {{ Search }}</div>
+	</section>
 	{% else %}
 	<section class="vol-index" >
 		<div class="vol-header" style="border-left: 5px solid #333;font-size:35px;text-align: center;">欢迎 (｡・`ω´･)</div>
