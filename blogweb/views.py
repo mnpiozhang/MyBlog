@@ -90,7 +90,7 @@ def aboutme(request):
     except:
         AboutMeObj = None
     ret['AboutMeObj'] = AboutMeObj
-    return render_to_response('about.html',ret)
+    return render_to_response('about.html',ret,context_instance=RequestContext(request))
     
 def archive(request):
     ret = {'ArchiveDict':None}
@@ -102,7 +102,7 @@ def archive(request):
     #创建有序字典序列
     ArchiveDict = OrderedDict(zip(ArticleDate,ArticleObjList))
     ret['ArchiveDict'] = ArchiveDict
-    return render_to_response('archive.html',ret)
+    return render_to_response('archive.html',ret,context_instance=RequestContext(request))
     
 def tags(request):
     ret = {'taglst':None}
@@ -115,7 +115,7 @@ def tags(request):
             taglst.append(dict(zip(dictemplate,(i.tagname,MatchTagCount))))
     ret['taglst'] = taglst
     #print taglst
-    return render_to_response('tags.html',ret)
+    return render_to_response('tags.html',ret,context_instance=RequestContext(request))
 
 def tools(request):
     return render(request,'tools.html')
@@ -126,6 +126,6 @@ def popularBooks(request):
     booksTop20 = pb.get_JD_Top20('nbs','internet','week')
     booksTop20Dict = json.loads(booksTop20,object_pairs_hook = OrderedDict)
     ret['booksdict'] = booksTop20Dict
-    return render_to_response('itpopularbooks.html',ret)
+    return render_to_response('itpopularbooks.html',ret,context_instance=RequestContext(request))
 
     
