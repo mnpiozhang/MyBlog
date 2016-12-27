@@ -25,7 +25,8 @@
     {% for a in ArticleObj %}
         <section class="vol-index">
             <div class="vol-header">
-                <h1 class="vol-title">{{ a.title }}</h1>
+            	<h1><a class="vol-title" href="/blog/show/{{ a.id }}" >{{ a.title }}</a></h1>
+                <!-- <h1 class="vol-title"></h1> -->
 
                     <p class="vol-meta">
                         <span class="glyphicon glyphicon-time">{{ a.timestamp|date:"Y-m-d H:i" }}</span>

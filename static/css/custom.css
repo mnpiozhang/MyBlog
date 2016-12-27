@@ -34,10 +34,11 @@ span.spacing { padding-left: 20px; }
 	text-align: right;
 }
 
+.vol-header a:hover,
 .keepright a:hover{ 
-	text-decoration: none;
 	color: rgb(255, 62, 62);
 	transition: all .3s ease-out;
+	text-decoration: none;
 }
 
 .header{
@@ -156,11 +157,40 @@ span.spacing { padding-left: 20px; }
 
 
 
+/*
 .vol-title{
 	font-family:"Times New Roman",Times,serif;
 	font-weight:bold;
 	color: rgb(0, 90, 90);
 }
+*/
+
+/*主页的下划线动画*/
+.vol-title{
+	font-family:"Times New Roman",Times,serif;
+	font-weight:bold;
+	color: rgb(0, 90, 90);
+	position: relative;
+}
+
+
+.vol-title:after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #00BCD4;
+    transform: scale3d(0,1,1);
+    transition: .4s ease-in-out;
+}
+
+.vol-title:hover:after{
+	transform:scale3d(1,1,1);
+}
+/*end*/
+
 .vol-meta{
 	color: #999;
     font-size: 90%;
@@ -201,7 +231,7 @@ span.spacing { padding-left: 20px; }
 
 .archive-title{
 	font-weight:bold;
-	font-size: 140%;
+	font-size: 160%;
 }
 
 .archive-title a {
@@ -214,17 +244,58 @@ span.spacing { padding-left: 20px; }
 	transition: all .3s ease-out;
 }
 
+.archive-title-link{
+	position: relative;
+}
+
+/*
+.archive-title-link:after{
+    content: "";
+    display: block;
+    width: 0;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background: #00BCD4;
+    transition:all 0.3s ease-in-out;
+}
+
+.archive-title-link:hover:after{
+	width:100%;
+}
+*/
 .archive-time{
 	margin-right: 20px;
 }
 
+/*archive 下划线动画效果*/
 .archive-header{
     display: block;
-    border-bottom: 1px solid #999999;
+    /*border-bottom: 1px solid #999999;*/
     margin-top: 1.7rem;
     text-align: center;
 	padding-bottom: 50px;
+	position: relative;
 }
+
+
+.archive-header:after{
+    content: "";
+    display: block;
+    width: 0;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background: #00BCD4;
+    transition:all 1s ease-in-out;
+}
+
+.archive-header:hover:after{
+	width:100%;
+}
+/*end*/
 
 .books-title{
     display: block;
