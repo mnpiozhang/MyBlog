@@ -129,8 +129,8 @@ span.spacing { padding-left: 20px; }
 
 .vol {
     padding-bottom: 2em;
-    padding-left: 45px;
-    /*background: rgb(0, 172, 86);*/
+    /*padding-left: 45px;
+    background: rgb(0, 172, 86);*/
     width:  calc(60% + 10px); 
     margin: 0 auto;
 }
@@ -266,7 +266,8 @@ span.spacing { padding-left: 20px; }
 }
 */
 .archive-time{
-	margin-right: 20px;
+	margin-right: 0px;
+	margin-top: 8px;
 }
 
 /*archive 下划线动画效果*/
@@ -314,9 +315,10 @@ a.button-xlarge {
         
 .archives-wrap {
     line-height: 35px;
-    width: 200px;
+    /*width: 200px;*/
     position: absolute;
-    padding-left: 60px;
+    padding-left: calc(2%);
+    /*padding-left: 60px;*/
     font-size: 30px;
     font-weight: bold;	
 }
