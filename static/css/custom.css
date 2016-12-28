@@ -319,7 +319,7 @@ a.button-xlarge {
     position: absolute;
     padding-left: calc(2%);
     /*padding-left: 60px;*/
-    font-size: 30px;
+    font-size: 200%;
     font-weight: bold;	
 }
 
