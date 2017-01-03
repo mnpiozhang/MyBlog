@@ -351,15 +351,20 @@ a.button-xlarge {
 }
 
 
+@media (min-width: 62em) {
+
+	.archives-wrap{
+		position: absolute;
+	}
+	
+}
+
+
 @media (min-width: 48em) {
     .rightcontent {
 		padding: 5em 1em 0;
     	margin-left: 25%;
     }
-
-	.archives-wrap{
-		position: absolute;
-	}
 
     .header {
 		top: auto;
