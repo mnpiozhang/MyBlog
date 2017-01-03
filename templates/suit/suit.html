@@ -3,9 +3,10 @@
 <head>
   <title>{% block title %}{% endblock %}</title>
   <meta charset="utf-8">
+  <meta name="description" Content="cloudhu 个人随笔 不定期的会记录一些文章。想写什么写什么">
+  <meta name="keywords" Content="运维 python 技术学习">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="toTop" content="true">
-  <meta name="baidu-site-verification" content="XA5eAF00io" />
   <link rel="stylesheet" href="/static/css/custom.css">
   <link type="text/css" rel="stylesheet" href="/static/css/tango.css">
   <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
@@ -66,21 +67,15 @@
     			<i class="fa fa-rss"></i>
 				</a>
   		</div>        
-        
-        
-        </div>
-
-
-        
-        
-        <div class="beian">
-        <p style="color: rgb(0, 90, 90);font-size: 12px;display: inline;">built by django|</p>
-        <a style="color: rgb(0, 90, 90);font-size: 12px;display: inline;" href="http://www.miibeian.gov.cn/">沪ICP备16019452号-1</a>
         </div>
 	    </div>
 
 	<div class="rightcontent pure-u-1 pure-u-md-3-4">
 	{% block content %}{% endblock %}
+	    <div class="beian">
+        <p style="color: rgb(0, 90, 90);font-size: 12px;display: inline;">Cloudhu 个人随笔|built by django|</p>
+        <a style="color: rgb(0, 90, 90);font-size: 12px;display: inline;" href="http://www.miibeian.gov.cn/">沪ICP备16019452号-1</a>
+        </div>
 	</div>
 	
 
