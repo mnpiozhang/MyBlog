@@ -79,6 +79,7 @@ span.spacing { padding-left: 20px; }
 }
 .nav-item {
 	text-align: right;
+	display: inline-block;
 }
 .nav-item a {
     background: transparent;
@@ -379,11 +380,15 @@ a.button-xlarge {
     }
     
     .beian{
-		/*position: absolute;*/
-		position: relative;
+		position: absolute;
+		/*position: relative;*/
 		bottom: 0;
 		left: 50%;
 		margin-left: -110px;
 		display: inline;
+	}
+	
+	.nav-item {
+	display: block;
 	}
 }
