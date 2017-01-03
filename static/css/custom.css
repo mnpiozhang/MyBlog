@@ -317,7 +317,7 @@ a.button-xlarge {
 .archives-wrap {
     line-height: 35px;
     /*width: 200px;*/
-    position: absolute;
+    /*position: absolute;*/
     padding-left: calc(2%);
     /*padding-left: 60px;*/
     font-size: 200%;
@@ -357,6 +357,10 @@ a.button-xlarge {
     	margin-left: 25%;
     }
 
+	.archives-wrap{
+		position: absolute;
+	}
+
     .header {
 		top: auto;
 		margin: 10% 2em 0;
@@ -370,7 +374,8 @@ a.button-xlarge {
     }
     
     .beian{
-		position: absolute;
+		/*position: absolute;*/
+		position: relative;
 		bottom: 0;
 		left: 50%;
 		margin-left: -110px;
