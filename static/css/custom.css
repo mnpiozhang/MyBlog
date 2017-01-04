@@ -383,8 +383,8 @@ a.button-xlarge {
 		/*position: absolute;*/
 		position: relative;
 		bottom: 0;
-		left: 50%;
-		margin-left: -110px;
+		left: 39%;
+		/*margin-left: -110px;*/
 		display: inline;
 	}
 	
