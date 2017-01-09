@@ -57,26 +57,25 @@ span.spacing { padding-left: 20px; }
 
 }
 .brand-title{
-	
 	padding: 4px 0;
-	text-align: right;
+	text-align: center;
 	font-size: 30px;
 }
 
 .brand-little-title{
 	padding: 4px 0;
-	text-align: right;
+	text-align: center;
 	font-size: 15px;
 	
 }
 
-
 .nav-list {
-	text-align: right;
+	text-align: center;
     margin: 0;
     padding: 2px 0;
     list-style: none;
 }
+
 .nav-item {
 	text-align: right;
 	display: inline-block;
@@ -100,7 +99,7 @@ span.spacing { padding-left: 20px; }
 
 
 .nav-item-icon {
-	text-align: right;
+	text-align: center;
 	margin-top: 10px;
 }
 .nav-item-icon a {
@@ -148,8 +147,8 @@ span.spacing { padding-left: 20px; }
 
 .vol-index {
     padding-bottom: 2em;
-    padding-left: 45px;
-    /*background: rgb(0, 172, 86);*/
+    /*padding-left: 45px;
+    background: rgb(0, 172, 86);*/
     width:  calc(75% + 10px); 
     margin: 0 auto;
     
@@ -334,7 +333,7 @@ a.button-xlarge {
 	text-align: center;
 	padding-top: 45%;*/
 	
-	position: absolute;
+	position: relative;
 	text-align: center;
 
 }
@@ -351,6 +350,10 @@ a.button-xlarge {
     text-decoration: none;
 }
 
+
+.search{
+	text-align: center
+}
 
 @media (min-width: 62em) {
 
@@ -387,8 +390,28 @@ a.button-xlarge {
 		/*margin-left: -110px;*/
 		display: inline;
 	}
-	
+
+	.brand-title{
+		text-align: right;
+	}
+
+	.brand-little-title{
+		text-align: right;
+	}
+
+	.nav-list {
+		text-align: right;
+	}
+
 	.nav-item {
-	display: block;
+		display: block;
+	}
+	
+	.nav-item-icon {
+		text-align: right;
+	}
+
+	.search{
+		text-align: right;
 	}
 }
