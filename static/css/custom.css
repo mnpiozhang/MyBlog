@@ -29,6 +29,17 @@ body {
 
 span.spacing { padding-left: 20px; }
 
+.music {
+	margin-top: 10px;
+    text-align: center;
+}
+
+.globe{
+	width: 90%;
+	filter:alpha(Opacity=80);
+	-moz-opacity:0.5;
+	opacity: 0.5;
+}
 
 .keepright { 
 	text-align: right;
@@ -413,5 +424,14 @@ a.button-xlarge {
 
 	.search{
 		text-align: right;
+	}
+	
+	.music {
+		margin-top: 10px;
+	    text-align: right;
+	}
+
+	.globe{
+		width: 90%;
 	}
 }
