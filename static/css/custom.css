@@ -19,7 +19,6 @@
 
 .rightcontent {
     padding: 2em 1em 0;
-
 }
 
 
@@ -162,8 +161,10 @@ span.spacing { padding-left: 20px; }
     background: rgb(0, 172, 86);*/
     width:  calc(75% + 10px); 
     margin: 0 auto;
-    
-
+    margin-top: 2em;
+    padding: 1em;
+    box-shadow: 0 1px 3px rgba(91,121,121,0.78);
+	background: white;
 }
 
 
