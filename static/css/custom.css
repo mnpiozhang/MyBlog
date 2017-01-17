@@ -319,7 +319,10 @@ span.spacing { padding-left: 20px; }
 }
 
 .detial{
-	margin: 20px 160px
+	margin: 1em 1em;
+	padding: 1em;
+    box-shadow: 0 1px 3px rgba(91,121,121,0.78);
+    background: white;
 }
 
 a.button-xlarge {
@@ -381,6 +384,10 @@ a.button-xlarge {
 		padding: 5em 1em 0;
     	margin-left: 25%;
     }
+
+	.detial {
+		margin: 1em 7em;
+	}
 
     .header {
 		top: auto;
