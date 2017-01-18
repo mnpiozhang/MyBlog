@@ -117,8 +117,8 @@ def tags(request):
     #print taglst
     return render_to_response('tags.html',ret,context_instance=RequestContext(request))
 
-def tools(request):
-    return render(request,'tools.html')
+def toys(request):
+    return render(request,'toys.html')
 
 
 def popularBooks(request):
