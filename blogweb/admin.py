@@ -14,6 +14,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = ['title', 'status']
     #ordering = ['title']
     actions = [make_published]
+    readonly_fields = ('last_modified','timestamp',)
 
 
 admin.site.register(Article,ArticleAdmin)
