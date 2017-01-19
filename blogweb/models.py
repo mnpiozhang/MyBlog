@@ -12,6 +12,8 @@ class Article(models.Model):
     title = models.CharField(max_length = 60,verbose_name = u'标题')
     content = models.TextField(verbose_name = u'内容')
     timestamp = models.DateTimeField(auto_now_add = True,verbose_name = u'时间戳')
+    last_modified = models.DateTimeField(auto_now = True,verbose_name = u'最后修改时间')
+    last_modified.editable = True
     tag = models.ManyToManyField('TagInfo',blank = True,verbose_name = u'分类标签')
     pic_height=models.PositiveIntegerField(default = 530)
     pic_width=models.PositiveIntegerField(default = 530)
