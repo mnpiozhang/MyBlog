@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #_*_ coding:utf-8 _*_
 from django.utils.safestring import mark_safe
+import pytz
 
 class Page:
     def __init__(self,AllCount,current_page,datanum=3):
@@ -94,3 +95,10 @@ def article_div(PreviousArticleObj=None,NextArticleObj=None):
         pagelist.append("<a class='pure-button prev' href='/blog/show/%d'>上一篇</a>" %(PreviousArticleObj.id))
         pagelist.append("<a class='pure-button next' href='/blog/show/%d'>下一篇</a>" %(NextArticleObj.id))
     return mark_safe(' '.join(pagelist))
+
+#转换为本地时间格式
+def trans_localdate_format(timeformat):
+    tz = pytz.timezone("Asia/Shanghai")
+    return tz.localize(timeformat)
+    
+#导入数据到elasticsearch

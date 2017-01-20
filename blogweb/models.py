@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 #_*_ coding:utf-8 _*_
 from django.db import models
+from common import trans_localdate_format
+#from common import sync_es
 
 STATUS_CHOICES = (
                   ('d','Draft'),
@@ -20,6 +22,20 @@ class Article(models.Model):
     status = models.CharField(max_length=1, choices=STATUS_CHOICES,default='d')
     def __unicode__(self):
         return self.title
+    
+    #overwrite model save method，在保存后同步指定字段信息到elasticsearch里面。
+    def save(self, *args, **kwargs):
+        super(self.__class__,self).save(*args, **kwargs)
+        try:
+            esinsert = {}
+            esinsert['title'] = self.title
+            esinsert['content'] = self.content
+            esinsert['status'] = self.status
+            esinsert['creattime'] = trans_localdate_format(self.timestamp)
+            print esinsert
+        except Exception,e:
+            print e
+            print "sync elasticsearch error"
     
 class TagInfo(models.Model):
     tagname = models.CharField(max_length = 20,verbose_name = u'标签名称')
