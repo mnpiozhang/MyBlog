@@ -2,6 +2,7 @@
 #_*_ coding:utf-8 _*_
 from django.utils.safestring import mark_safe
 import pytz
+from elasticsearch import Elasticsearch
 
 class Page:
     def __init__(self,AllCount,current_page,datanum=3):
@@ -102,3 +103,51 @@ def trans_localdate_format(timeformat):
     return tz.localize(timeformat)
     
 #导入数据到elasticsearch
+def sync_es(inputdict,idnum):
+    es = Elasticsearch(["http://192.168.247.128:9200"])
+    articlemapping = {
+                      "mappings" : {
+                                    "article" : {
+                                                "_all": {
+                                                        "analyzer": "ik_max_word",
+                                                        "search_analyzer": "ik_max_word",
+                                                        "term_vector": "no",
+                                                        "store": "false"
+                                                        },
+                                                "properties" : {
+                                                        "title" : { 
+                                                                    "type" : "string", 
+                                                                    "analyzer": "ik_max_word",
+                                                                    "search_analyzer": "ik_max_word",
+                                                                    "include_in_all": "true",
+                                                                    "boost": 8
+                                                                    },
+                                                        "content" : { 
+                                                                    "type" : "string", 
+                                                                    "analyzer": "ik_max_word",
+                                                                    "search_analyzer": "ik_max_word",
+                                                                    "include_in_all": "true",
+                                                                    "boost": 8
+                                                                    },
+                                                                }
+                                                 }
+                                    }
+                      }
+    indexName = "blog"
+    if not es.indices.exists(indexName):
+        es.indices.create(index = indexName, body = articlemapping,ignore = 400)
+    return es.index(index=indexName, doc_type="article", body=inputdict, id=idnum)
+
+
+    '''
+    curl -XPOST http://localhost:9200/blog/article/_search?pretty  -d'
+    {
+        "query" : { 
+                            "query_string" : {
+                            "analyze_wildcard" : "true",
+                            "query" : "开始"
+                        }
+        } 
+    }
+    '
+    '''

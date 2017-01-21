@@ -2,7 +2,7 @@
 #_*_ coding:utf-8 _*_
 from django.db import models
 from common import trans_localdate_format
-#from common import sync_es
+from common import sync_es
 
 STATUS_CHOICES = (
                   ('d','Draft'),
@@ -32,7 +32,8 @@ class Article(models.Model):
             esinsert['content'] = self.content
             esinsert['status'] = self.status
             esinsert['creattime'] = trans_localdate_format(self.timestamp)
-            print esinsert
+            #print esinsert
+            print sync_es(esinsert,self.id)
         except Exception,e:
             print e
             print "sync elasticsearch error"
