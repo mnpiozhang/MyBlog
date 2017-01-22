@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #_*_ coding:utf-8 _*_
 from django.shortcuts import render,render_to_response,redirect
+from django.http import HttpResponseNotFound
 from blogweb.models import Article,AboutMe,TagInfo
 from django.template.context import RequestContext
 from common  import  Page,page_div,article_div,search_result
@@ -28,7 +29,12 @@ def index(request,page=1):
 
 def showarticle(request,articleId):
     ret = {'ArticleObj':None}
-    ArticleObj = Article.objects.get(id=articleId)
+    #添加是否为草稿的判断,防止直接请求url查看到草稿的文章.
+    try:
+        ArticleObj = Article.objects.get(id=articleId,status='p')
+    except:
+        #如果查询出错，含有文章但是文章为草稿或文章id不存在的情况，返回404
+        return HttpResponseNotFound('<h1>Page not found</h1>')    
     #上一篇的文档对象，由于文档展示排序是倒叙，所以上一篇id正常的未删除任何文章的话就是加一,如果上一篇不存在，则赋值空
     try:
         PreviousArticleObj = Article.objects.order_by('id').filter(id__gt=articleId,status='p')[0:1].get()
