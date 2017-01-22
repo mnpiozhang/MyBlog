@@ -33,7 +33,7 @@ class Article(models.Model):
             esinsert['status'] = self.status
             esinsert['createtime'] = trans_localdate_format(self.timestamp)
             #print esinsert
-            print sync_es(esinsert,self.id)
+            sync_es(esinsert,self.id)
         except Exception,e:
             print e
             print "sync elasticsearch error"
