@@ -104,7 +104,7 @@ def trans_localdate_format(timeformat):
     
 #导入数据到elasticsearch
 def sync_es(inputdict,idnum):
-    es = Elasticsearch(["http://192.168.247.128:9200"])
+    es = Elasticsearch(["http://127.0.0.1:9200"])
     articlemapping = {
                       "mappings" : {
                                     "article" : {
@@ -138,16 +138,32 @@ def sync_es(inputdict,idnum):
         es.indices.create(index = indexName, body = articlemapping,ignore = 400)
     return es.index(index=indexName, doc_type="article", body=inputdict, id=idnum)
 
-
-    '''
-    curl -XPOST http://localhost:9200/blog/article/_search?pretty  -d'
-    {
+def search_result(queryStatements):
+    es = Elasticsearch(["http://127.0.0.1:9200"])
+    indexName = "blog"
+    queryBody = {
         "query" : { 
-                            "query_string" : {
-                            "analyze_wildcard" : "true",
-                            "query" : "开始"
-                        }
-        } 
+            "query_string" : {
+                "analyze_wildcard" : "true",
+                "query" : queryStatements
+            }
+        }
     }
-    '
-    '''
+    #print queryBody
+    queryResult = es.search(index=indexName,body=queryBody)
+    return queryResult
+
+
+
+'''
+curl -XPOST http://localhost:9200/blog/article/_search?pretty  -d'
+{
+    "query" : { 
+        "query_string" : {
+            "analyze_wildcard" : "true",
+            "query" : "开始"
+        }
+    }
+}
+'
+'''

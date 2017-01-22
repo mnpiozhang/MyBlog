@@ -31,7 +31,7 @@ class Article(models.Model):
             esinsert['title'] = self.title
             esinsert['content'] = self.content
             esinsert['status'] = self.status
-            esinsert['creattime'] = trans_localdate_format(self.timestamp)
+            esinsert['createtime'] = trans_localdate_format(self.timestamp)
             #print esinsert
             print sync_es(esinsert,self.id)
         except Exception,e:

@@ -3,7 +3,7 @@
 from django.shortcuts import render,render_to_response,redirect
 from blogweb.models import Article,AboutMe,TagInfo
 from django.template.context import RequestContext
-from common  import  Page,page_div,article_div
+from common  import  Page,page_div,article_div,search_result
 from collections import OrderedDict
 import popularbooks as pb
 import json
@@ -70,6 +70,37 @@ def searchtitle(request):
     if request.method == 'POST':
         search = request.POST.get('search',None)
         if search == "":
+            ret = {'Search':None,'Hit':0,'Article':None}
+            return render_to_response('search.html',ret,context_instance=RequestContext(request))
+
+        result = search_result(search)
+        hitcount = result["hits"]["total"]
+        if hitcount == 0:
+            ret = {'Search':search,'Hit':0,'Article':None}
+        else:
+            #重新定义hitcount避免草稿的数量也统计进去.
+            #如果搜索hit为1，但是命中的文章为草稿，则hitcount重置为0，无搜索结果
+            hitcount = 0
+            ArticleLst = []
+            for i in result["hits"]["hits"]:
+                #判断是否为草稿，草稿直接pass
+                if i['_source']['status'] == "p":
+                    tmpdict = {}
+                    tmpdict['id'] = i['_id']
+                    tmpdict['title'] = i['_source']['title']
+                    ArticleLst.append(tmpdict)
+                    hitcount = hitcount +1
+                else:
+                    continue
+            ret = {'Search':search,'Hit':hitcount,'Article':ArticleLst}
+        return render_to_response('search.html',ret,context_instance=RequestContext(request))
+    return redirect('/blog/index')
+
+'''
+def searchtitle(request):
+    if request.method == 'POST':
+        search = request.POST.get('search',None)
+        if search == "":
             return redirect('/blog/index')
         ret = {'ArticleObj':None,'PageInfo':None,'Search':None}
         MatchTagObj = Article.objects.filter(title__contains = search,status='p')
@@ -80,8 +111,11 @@ def searchtitle(request):
             ret['PageInfo'] = ""
         ret['ArticleObj'] = ArticleObj
         ret['Search'] = search
+        print search_result(search)
         return render_to_response('index.html',ret,context_instance=RequestContext(request))
     return redirect('/blog/index')
+'''
+
 
 def aboutme(request):
     ret = {'AboutMeObj':None}
