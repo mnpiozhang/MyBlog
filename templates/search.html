@@ -45,9 +45,9 @@
 	<section class="vol-index">
 	
 		{% for a in Article %}
-		<nav class="tagcloud">
-	    <a class="button" href="/blog/show/{{ a.id }}" >{{ a.title }}</a>
-		</nav>
+		<div class="vol-header">
+	    <h1><a class="vol-title" href="/blog/show/{{ a.id }}" >{{ a.title }}</a></h1>
+		</div>
 		{% endfor %}
 	
 	</section>
