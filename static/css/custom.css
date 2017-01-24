@@ -101,10 +101,10 @@ span.spacing { padding-left: 20px; }
 }
 .nav-item a:hover,
 .nav-item a:focus {
-    border: 2px solid rgb(0, 255, 60);
+    border: 2px solid rgb(20, 255, 255);
     text-decoration: none;
     color:#00ff00;
-    transition: all .3s ease-out;
+    transition: all .8s ease-out;
 }
 
 
@@ -133,9 +133,37 @@ span.spacing { padding-left: 20px; }
     padding-bottom: 2em;
 }
 
-.pagediv a:hover{
-    text-decoration: none;
+
+.pagediv a {
+    
+    border-bottom: 5px solid rgb(221, 221, 221);
+    color: #62bbc3;
+    margin-top: 1em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 100%;
+    font-weight: 600;
 }
+.pagediv a:hover,
+.pagediv a:focus {
+	background: transparent;
+    border-bottom: 5px solid rgb(20, 225, 225);
+    text-decoration: none;
+    color:#00ff00;
+    transition: all .8s ease-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .vol {
     padding-bottom: 2em;
