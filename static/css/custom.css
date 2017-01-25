@@ -11,6 +11,8 @@
 
 .leftpage{
     background: rgb(0, 150, 75);
+    /*background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #444), color-stop(0.5, #555), color-stop(0.51, #444), color-stop(1, #444));*/
+    background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, rgb(0, 150, 75)), color-stop(0.5, #555), color-stop(0.51, #444), color-stop(1, rgb(0, 150, 75)));
     color: #fff;
     box-shadow: 2px 0 5px #888888;
     overflow-y: auto;
