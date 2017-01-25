@@ -57,6 +57,9 @@ def searchtag(request,tagname,page=1):
     ret = {'ArticleObj':None,'PageInfo':None,'TagName':None}
     #根据Article对象的tag字段多对多对应TagInfo表的tagname字段
     MatchTagObj = Article.objects.filter(tag__tagname__contains = tagname,status='p')
+    #判断如果传进来的tagname查不出结果就返回404
+    if not MatchTagObj:
+        return HttpResponseNotFound('<h1>Page not found</h1>')
     AllCount = MatchTagObj.all().count()
     #分页为首页
     try:
@@ -100,7 +103,8 @@ def searchtitle(request):
                     continue
             ret = {'Search':search,'Hit':hitcount,'Article':ArticleLst}
         return render_to_response('search.html',ret,context_instance=RequestContext(request))
-    return redirect('/blog/index')
+    else:
+        return redirect('/blog/index')
 
 '''
 def searchtitle(request):
