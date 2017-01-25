@@ -64,8 +64,18 @@ span.spacing { padding-left: 20px; }
     border-radius:60%; 
     overflow:hidden;
     border: 5px solid;
+    -webkit-transition: all ease .3s;
+	transition: all ease .3s
 
 }
+
+/*肖像点击动态呼吸灯效果*/
+.header img:hover {
+	-webkit-transform: scale(1.05);
+	transform: scale(1.05);
+	box-shadow: 0px 0px 18px rgba(0,0,0,.5);
+}
+
 .brand-title{
 	padding: 4px 0;
 	text-align: center;
@@ -124,6 +134,13 @@ span.spacing { padding-left: 20px; }
 	background: transparent;
     text-decoration: none;
     color:#00ff00;
+}
+
+.nav-item-icon i:hover {
+	-webkit-transform: scale(1.25);
+	transform: scale(1.25);
+	-webkit-transition: all ease .3s;
+	transition: all ease .3s;
 }
 
 .pagediv{
