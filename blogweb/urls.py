@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from views import index,showarticle,searchtag,aboutme,archive,tags,popularBooks,toys,searchtitle
+from views import index,showarticle,searchtag,aboutme,archive,tags,itPopularBooks,novelPopularBooks,toys,searchtitle
 from feeds import ArticlesFeed
 
 urlpatterns = [         
@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^tag/$',tags),
     url(r'^rss/$',ArticlesFeed()),
     url(r'^toys/$',toys),
-    url(r'^toys/itpopularbooks/$',popularBooks),
+    url(r'^toys/itpopularbooks/$',itPopularBooks),
+    url(r'^toys/novelpopularbooks/$',novelPopularBooks),
     url(r'^search',searchtitle)
 ]

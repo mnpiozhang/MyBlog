@@ -165,11 +165,16 @@ def toys(request):
     return render(request,'toys.html')
 
 
-def popularBooks(request):
+def itPopularBooks(request):
     ret = {'booksdict':None}
-    booksTop20 = pb.get_JD_Top20('nbs','internet','week')
+    booksTop20 = pb.get_JD_Top20('nbs','internet','day')
     booksTop20Dict = json.loads(booksTop20,object_pairs_hook = OrderedDict)
     ret['booksdict'] = booksTop20Dict
-    return render_to_response('itpopularbooks.html',ret,context_instance=RequestContext(request))
+    return render_to_response('popularbooks.html',ret,context_instance=RequestContext(request))
 
-    
+def novelPopularBooks(request):
+    ret = {'booksdict':None}
+    booksTop20 = pb.get_JD_Top20('nbs','novel','day')
+    booksTop20Dict = json.loads(booksTop20,object_pairs_hook = OrderedDict)
+    ret['booksdict'] = booksTop20Dict
+    return render_to_response('popularbooks.html',ret,context_instance=RequestContext(request))
