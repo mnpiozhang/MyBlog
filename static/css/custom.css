@@ -5,6 +5,15 @@
     font-family: 'Microsoft Yahei', sans-serif;
 }
 
+@-webkit-keyframes myfadeIn {
+	0% {
+		opacity: 0; /*透明度动画效果.开始透明度0全透明*/
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 #layout {
 	padding: 0;
 }
@@ -21,8 +30,12 @@
 
 .rightcontent {
     padding: 2em 1em 0;
+    
+    -webkit-animation-name: myfadeIn; /*右边内容框动画名称*/
+	-webkit-animation-duration: 1s; /*动画持续时间*/
+	-webkit-animation-iteration-count: 1; /*动画次数*/
+	-webkit-animation-delay: 0s; /*延迟时间*/
 }
-
 
 body { 
 	overflow-y: scroll;
@@ -172,18 +185,6 @@ span.spacing { padding-left: 20px; }
     transition: all .8s ease-out;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .vol {
     padding-bottom: 2em;
     /*padding-left: 45px;
@@ -200,8 +201,6 @@ span.spacing { padding-left: 20px; }
     margin: 0 auto;
 }
 
-
-
 .vol-index {
     padding-bottom: 2em;
     /*padding-left: 45px;
@@ -213,8 +212,6 @@ span.spacing { padding-left: 20px; }
     box-shadow: 0 1px 3px rgba(91,121,121,0.78);
 	background: white;
 }
-
-
 
 /*
 .vol-title{
@@ -231,7 +228,6 @@ span.spacing { padding-left: 20px; }
 	color: rgb(0, 90, 90);
 	position: relative;
 }
-
 
 .vol-title:after{
     content: "";
@@ -263,14 +259,15 @@ span.spacing { padding-left: 20px; }
     background: #8080ff;
     font-size: 80%;
 }
+
 .article-title{
     padding-top: 0.3rem;
 	display: block;
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
     font-weight: bold;
-
 }
+
 .article-header{
 	content: '';
     display: block;
@@ -279,10 +276,11 @@ span.spacing { padding-left: 20px; }
     text-align: center;
 	padding-bottom: 1em;
 }
+
 .article-detial{
 	margin: 0 auto;
-
 }
+
 .article-description{
 	padding-bottom: 2em;
 	padding-top: 2em;
@@ -340,7 +338,6 @@ span.spacing { padding-left: 20px; }
 	width: 115%;
 }
 
-
 .archive-header:after{
     content: "";
     display: block;
@@ -374,7 +371,7 @@ span.spacing { padding-left: 20px; }
 
 a.button-xlarge {
     font-size: 425%;
-        }
+}
         
 .archives-wrap {
     line-height: 35px;
@@ -397,7 +394,6 @@ a.button-xlarge {
 	
 	position: relative;
 	text-align: center;
-
 }
 
 .tagcloud a {
@@ -411,7 +407,6 @@ a.button-xlarge {
 .tagcloud a:hover {
     text-decoration: none;
 }
-
 
 .search{
 	text-align: center
