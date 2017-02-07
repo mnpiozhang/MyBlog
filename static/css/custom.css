@@ -209,8 +209,10 @@ span.spacing { padding-left: 20px; }
     margin: 0 auto;
     margin-top: 2em;
     padding: 1em;
-    box-shadow: 0 1px 3px rgba(91,121,121,0.78);
-	background: white;
+    /*box-shadow: 0 1px 3px rgba(91,121,121,0.78);
+    background: white;*/
+    border-bottom: dotted  3px rgba(91,121,121,0.78) ;
+	
 }
 
 /*
@@ -277,7 +279,7 @@ span.spacing { padding-left: 20px; }
 	padding-bottom: 1em;
 }
 
-.article-detial{
+.article-detail{
 	margin: 0 auto;
 }
 
@@ -362,12 +364,13 @@ span.spacing { padding-left: 20px; }
 	padding-bottom: 60px;
 }
 
-.detial{
+.detail{
 	margin: 1em 1em;
 	padding: 1em;
     box-shadow: 0 1px 3px rgba(91,121,121,0.78);
     background: white;
 }
+
 
 a.button-xlarge {
     font-size: 425%;
@@ -427,7 +430,7 @@ a.button-xlarge {
     	margin-left: 25%;
     }
 
-	.detial {
+	.detail {
 		margin: 1em 7em;
 	}
 
