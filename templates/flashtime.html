@@ -1,0 +1,52 @@
+{% extends "suit/suit.html" %}
+{% load djangomarkdown %}
+{% block title %}FlashTime|Cloudhu 个人随笔{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/static/css/flashtime.css">
+
+<div class="flashtime" style="text-align: center;">
+	<a class="switcher" href="#"></a>
+	<div class="screen glitch" style="width: 720px;height:200px;margin-top:50px;">
+	  	<div class="clock is-off"><span class="time" data-time=""></span></div>
+	  	<div class="figure"></div>
+	  	<div class="figure-mask"></div>
+	</div>
+</div>
+
+<script>
+$(document).ready(function () {
+
+  function second_passed() {
+    $('.clock').removeClass('is-off');
+  }
+  setTimeout(second_passed, 2000)
+
+  $('.switcher').on('click', function(e) {
+    e.preventDefault();
+    $('.screen').toggleClass('glitch');
+  });
+
+
+  var newDate = new Date();
+  newDate.setDate(newDate.getDate());
+
+  setInterval( function() {
+
+    var hours    = new Date().getHours();
+    var seconds  = new Date().getSeconds();
+    var minutes  = new Date().getMinutes();
+
+    var realTime = ( hours < 10 ? '0' : '' ) + hours + ' : ' + ( minutes < 10 ? '0' : '' ) + minutes + ' : ' + ( seconds < 10 ? '0' : '' ) + seconds
+
+    $('.time').html(realTime);
+    $('.time').attr('data-time', realTime);
+
+  }, 1000);
+
+});
+</script>
+
+
+{% endblock %}

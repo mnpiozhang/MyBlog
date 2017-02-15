@@ -178,3 +178,6 @@ def novelPopularBooks(request):
     booksTop20Dict = json.loads(booksTop20,object_pairs_hook = OrderedDict)
     ret['booksdict'] = booksTop20Dict
     return render_to_response('popularbooks.html',ret,context_instance=RequestContext(request))
+
+def flashtime(request):
+    return render(request,'flashtime.html')
