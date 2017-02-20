@@ -165,7 +165,7 @@ def toys(request):
     ret = {'toyObj':None}
     toyObj = Toys.objects.all()
     ret['toyObj'] = toyObj
-    render_to_response('toys.html',ret,context_instance=RequestContext(request))
+    return render_to_response('toys.html',ret,context_instance=RequestContext(request))
 
 def itPopularBooks(request):
     ret = {'booksdict':None}
