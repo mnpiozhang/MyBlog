@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Article,TagInfo,AboutMe
+from models import Article,TagInfo,AboutMe,Toys
 from common import sync_es,trans_localdate_format
 # Register your models here.
 
@@ -36,4 +36,5 @@ class ArticleAdmin(admin.ModelAdmin):
 
 admin.site.register(Article,ArticleAdmin)
 admin.site.register(TagInfo)
+admin.site.register(Toys)
 admin.site.register(AboutMe)

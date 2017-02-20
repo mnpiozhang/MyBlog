@@ -4,6 +4,7 @@
 {% block content %}
 <div>
 <section class="vol">
+<!-- 
 	<nav class="tagcloud">
     <a class="button" href="/blog/toys/itpopularbooks" >爬虫——it类图书TOP20</a><span>(京东24小时内)</span>
 	</nav>
@@ -19,6 +20,12 @@
 	<nav class="tagcloud">
 	<a class="button" href="/blog/show/35/" >图片转彩色字符画</a><span>(^_^)</span>
 	</nav>
+-->
+	{{ for i in toyObj }}
+	<nav class="tagcloud">
+    <a class="button" href="{ i.toyurl }" >{ i.toyname }</a><span>{ i.toyspan }</span>
+	</nav>
+	{{ endfor }}
 </section>
 </div>
 

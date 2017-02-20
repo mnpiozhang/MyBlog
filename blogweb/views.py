@@ -2,7 +2,7 @@
 #_*_ coding:utf-8 _*_
 from django.shortcuts import render,render_to_response,redirect
 from django.http import HttpResponseNotFound
-from blogweb.models import Article,AboutMe,TagInfo
+from blogweb.models import Article,AboutMe,TagInfo,Toys
 from django.template.context import RequestContext
 from common  import  Page,page_div,article_div,search_result
 from collections import OrderedDict
@@ -162,8 +162,10 @@ def tags(request):
     return render_to_response('tags.html',ret,context_instance=RequestContext(request))
 
 def toys(request):
-    return render(request,'toys.html')
-
+    ret = {'toyObj':None}
+    toyObj = Toys.objects.all()
+    ret['toyObj'] = toyObj
+    render_to_response('toys.html',ret,context_instance=RequestContext(request))
 
 def itPopularBooks(request):
     ret = {'booksdict':None}
