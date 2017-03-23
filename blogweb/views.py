@@ -137,7 +137,7 @@ def aboutme(request):
     return render_to_response('about.html',ret,context_instance=RequestContext(request))
     
 def archive(request):
-    ret = {'ArchiveDict':None}
+    ret = {'ArchiveDict':None,'ArticleCount':None}
     ArticleObjList = []
     ArticleDate = Article.objects.filter(status='p').dates('timestamp','month',order='DESC')
     for i in ArticleDate:
@@ -145,6 +145,7 @@ def archive(request):
         ArticleObjList.append(ArticleObj)
     #创建有序字典序列
     ArchiveDict = OrderedDict(zip(ArticleDate,ArticleObjList))
+    ret['ArticleCount'] = Article.objects.filter(status='p').count()
     ret['ArchiveDict'] = ArchiveDict
     return render_to_response('archive.html',ret,context_instance=RequestContext(request))
     

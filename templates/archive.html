@@ -4,6 +4,12 @@
 
 {% block content %}
 
+{% if ArticleCount %}
+<section class="vol-index" style="margin-top:0;">
+	<div class="vol-header" style="font-size:25px;text-align: center;">已经码了 {{ ArticleCount }} 篇，继续加油！</div>
+</section>
+{% endif %}
+
 {% for k,v in ArchiveDict.items %}
 <section>    
     	<div class="archives-wrap">{{ k|date:"Y-m" }}</div>
