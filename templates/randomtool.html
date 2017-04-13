@@ -6,12 +6,12 @@
 
 
 <section class="vol-index" style="margin-top:0;">
-	<div class="vol-header" style="border-left: 5px solid #333;font-size:1.5em;text-align: center;">随机工具</div>
-	<p>为解决某人的选择困难症，可以使用该小工具。使用方式可以这样:</p>
+	<div class="vol-header" style="border-left: 5px solid #333;font-size:1.5em;text-align: center;">随机工具--传供选择困难症人群使用</div>
+	<p>为解决某人的选择困难症，(,,• ₃ •,,)，可以使用该小工具。使用方式可以这样:</p>
 	<ul>
 		<li>输入内容共分为两部分，一个是描述，一个是随机项</li>
-		<li>描述就是对该随机行为描述，例如输入今天晚上吃什么</li>
-		<li>随机项就是你要随机挑选的东西，例如面条，米饭，方便面</li>
+		<li>描述就是对该随机行为描述，例如输入"今天晚上吃什么"</li>
+		<li>随机项就是你要随机挑选的东西，例如"面条"，"米饭"，"方便面"</li>
 		<li>然后点击确定，就会随机在以上随机项目中选择然后输出结果"今天晚上吃什么:方便面"</li>
 	</ul>
 </section>
@@ -35,7 +35,7 @@
 			        </tbody>
 			        </table>
     			</div>
-			<input style="margin-bottom:1em" class="btn btn-primary btn-xs" type="button" name="add" value="增加">
+			<input style="margin-bottom:1em" class="btn btn-primary btn-xs" type="button" name="add" value="添加随机项">
 
 			<script type="text/javascript">
 			$(function(){
@@ -64,7 +64,7 @@
 		      <input id="formdescription" name="formdescription" type="text" required="required">
 		    </p>
 			
-			<input type='submit' value='确认' class="btn btn-primary" role="button"/>
+			<input type='submit' value='来吧...把命运交给计算机(*ω* )' class="btn btn-primary" role="button"/>
 			</div>
 		</form>
 		
@@ -79,23 +79,54 @@
 
 
 <script>
+//using jQuery
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
 $().ready(function() {
-	$("submitform").submit(function(e) {
+	$("form").submit(function(e) {
 	
 	    var url = "/blog/randomtool/";
 	
 	    $.ajax({
 	           type: "POST",
 	           url: url,
-	           data: $("submitform").serialize(), // serializes the form's elements.
+	           data: $("form").serialize(), 
 	           // 如果表单提交成功
 	           success: function(data)
 	           {
-	               alert(data); // 显示django的response的内容
+	               alert(data); 
 	           }
 	         });
 	
-	    e.preventDefault(); // avoid to execute the actual submit of the form.
+	    e.preventDefault(); 
 	});
 });
 </script>
