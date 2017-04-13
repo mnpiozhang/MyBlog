@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #_*_ coding:utf-8 _*_
-from django.shortcuts import render,render_to_response,redirect
+from django.shortcuts import render,render_to_response,redirect,HttpResponse
 from django.http import HttpResponseNotFound
 from blogweb.models import Article,AboutMe,TagInfo,Toys
 from django.template.context import RequestContext
@@ -8,6 +8,7 @@ from common  import  Page,page_div,article_div,search_result
 from collections import OrderedDict
 import popularbooks as pb
 import json
+from utils import random_choice
 
 # Create your views here.
 def index(request,page=1):
@@ -184,3 +185,13 @@ def novelPopularBooks(request):
 
 def flashtime(request):
     return render(request,'flashtime.html')
+
+def randomtool(request):
+    if request.method == 'POST':
+        formitem = request.POST.getlist('formitem[]',None)
+        formdescription = request.POST.get('formdescription',None)
+        rendomchoice = random_choice(formitem)
+        rendomresult = formdescription + " : " + rendomchoice
+        return HttpResponse(rendomresult)
+    else:
+        return render(request,'randomtool.html')
