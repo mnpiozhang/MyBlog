@@ -186,6 +186,9 @@ def novelPopularBooks(request):
 def flashtime(request):
     return render(request,'flashtime.html')
 
+def dogfood(request):
+    return render(request,'hidden.html')
+
 def randomtool(request):
     if request.method == 'POST':
         formitem = request.POST.getlist('formitem[]',None)
