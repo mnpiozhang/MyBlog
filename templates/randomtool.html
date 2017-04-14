@@ -18,7 +18,7 @@
 
 	
 	<section class="vol-index">
-		<form>{% csrf_token %}
+		<form id="randomtoolform">{% csrf_token %}
 			<div class="vol-header">
 		        <div>
 			        <table id="tab" class="table table-striped table-bordered">
@@ -111,14 +111,14 @@ $.ajaxSetup({
 });
 
 $().ready(function() {
-	$("form").submit(function(e) {
+	$("#randomtoolform").submit(function(e) {
 	
 	    var url = "/blog/randomtool/";
 	
 	    $.ajax({
 	           type: "POST",
 	           url: url,
-	           data: $("form").serialize(), 
+	           data: $("#randomtoolform").serialize(), 
 	           // 如果表单提交成功
 	           success: function(data)
 	           {
