@@ -13,7 +13,6 @@
   text-align: center;
   }
   
-  
 .timer div {
     display : inline-block;
     min-width: 90px;
@@ -34,7 +33,6 @@ canvas {
   height: 100%;
   background-color: rgba(0,0,0,.2);
 }
-
 
 .heart {
   position: relative;
@@ -70,23 +68,30 @@ canvas {
   }
 }
 
-
-
 </style>
 
 <section class="vol">
-  	<div class="clock is-off"><span class="time" data-time=""></span></div>
+<div>HZL</div>
+</section>
+
+<section class="vol">
+<div class="heart"></div>
+</section>
+
+<section class="vol">
+<div>LYJ</div>
+</section>
+
+<section class="vol">
   	<div class="timer" id="timer"></div>
-  	<button id="bt">Stop</button>
+  	<!-- <button id="bt">Stop</button> -->
 </section>
 <!-- 
 <section class="vol">
 <canvas id="heart1"></canvas>
 </section>
  -->
-<section class="vol">
-<div class="heart"></div>
-</section>
+
 
 <script>
 $(document).ready(function () {
@@ -105,8 +110,6 @@ $(document).ready(function () {
 
     var realTime = days + 'days' + hours + 'hours' + minutes + 'minutes' + seconds + 'seconds';
 
-    $('.time').html(realTime);
-    $('.time').attr('data-time', realTime);
     $(".timer").html('<div>' + days + '<span>days</span></div>' + '<div>' + hours + '<span>hours</span></div>' + '<div>' + minutes + '<span>minutes</span></div>' + '<div>' + seconds + '<span>seconds</span></div>');
 
   }, 1000);
