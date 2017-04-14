@@ -190,7 +190,10 @@ def randomtool(request):
     if request.method == 'POST':
         formitem = request.POST.getlist('formitem[]',None)
         formdescription = request.POST.get('formdescription',None)
-        rendomchoice = random_choice(formitem)
+        try:
+            rendomchoice = random_choice(formitem)
+        except:
+            return HttpResponse("输入项有误")
         rendomresult = formdescription + " : " + rendomchoice
         return HttpResponse(rendomresult)
     else:

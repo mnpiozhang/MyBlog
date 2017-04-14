@@ -30,7 +30,7 @@
 					<tbody>
 			            <tr>
 			            	<td><input type="text" id="formitem1" name="formitem[]" required="required"></td>
-			            	<td width="25"><input type="button" name="del" value="删除"></td>
+			            	<td width="25"><input class="btn btn-danger btn-xs" type="button" name="del" value="删除"></td>
 			            </tr>
 			        </tbody>
 			        </table>
@@ -50,7 +50,7 @@
 			function insertTr(){
 			    var html='';
 			    html+='<tr><td><input type="text" id="formitem'+fm.toString()+'" name="formitem[]" required="required"></td>';
-			    html+='<td width="25"><input type="button" name="del" value="删除"></td></tr>';
+			    html+='<td width="25"><input class="btn btn-danger btn-xs" type="button" name="del" value="删除"></td></tr>';
 			    $('#tab').append(html);
 			    $(':button[name=del]').click(function(){
 			        $(this).parents('tr').remove();
