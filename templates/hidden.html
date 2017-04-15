@@ -6,7 +6,7 @@
 <style>
 
 .timer {  
-  font-size: 3em;
+  font-size: 1.7em;
   font-weight: 100;
   color: white;
   text-shadow: 0 0 20px #48C8FF;
@@ -15,7 +15,7 @@
   
 .timer div {
     display : inline-block;
-    min-width: 90px;
+    min-width: 3em;
     }
    
 .timer span {
@@ -41,6 +41,8 @@ canvas {
   width: 105px;
   height: 105px;
   margin: -52.5px 0 0 -52.5px;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 .heart:hover::before {
@@ -54,7 +56,7 @@ canvas {
   content: '';
   display: block;
   transition: all 400ms;
-  #-webkit-animation: pulse 1.2s steps(1) infinite;
+  -webkit-animation: pulse 1s steps(1) infinite;
   width: 15px;
   height: 15px;
   margin: -15px 0 0 -15px;
@@ -64,14 +66,45 @@ canvas {
 @-webkit-keyframes pulse {
   50% {
     -webkit-filter: blur(1.4px);
-    #-webkit-transform: translate(-2px, 2px);
+    -webkit-transform: translate(-1px, 1px);
   }
+}
+
+@-webkit-keyframes namejump {
+  20% {
+	-webkit-transform: scale(1.05);
+	transform: scale(1.05);
+  }
+  40% {
+	-webkit-transform: scale(1.15);
+	transform: scale(1.15);
+  }
+  60% {
+	-webkit-transform: scale(1.25);
+	transform: scale(1.25);
+  }
+  80% {
+	-webkit-transform: scale(1.35);
+	transform: scale(1.35);
+  }
+  100% {
+	-webkit-transform: scale(1.45);
+	transform: scale(1.45);
+  }
+}
+
+.name {
+	text-align: center;
+	font-family: fantasy;
+	font-size: 7em;
+	-webkit-animation: namejump 2s steps(1) infinite;
+	-webkit-animation-duration: 0.6s; /*动画持续时间*/
 }
 
 </style>
 
 <section class="vol">
-<div>HZL</div>
+<div class="name">HZL</div>
 </section>
 
 <section class="vol">
@@ -79,7 +112,7 @@ canvas {
 </section>
 
 <section class="vol">
-<div>LYJ</div>
+<div class="name">LYJ</div>
 </section>
 
 <section class="vol">

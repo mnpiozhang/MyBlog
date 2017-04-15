@@ -32,5 +32,5 @@ urlpatterns = [
     url(r'^toys/flashtime/$',flashtime),
     url(r'^search',searchtitle),
     url(r'^randomtool/',randomtool),
-    url(r'^hidden/',dogfood),
+    url(r'^dogfood/',dogfood),
 ]
