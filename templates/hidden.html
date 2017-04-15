@@ -31,7 +31,7 @@ canvas {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,.2);
+  #background-color: rgba(0,0,0,.2);
 }
 
 .heart {
@@ -127,11 +127,11 @@ canvas {
   	<div class="timer" id="timer"></div>
   	<!-- <button id="bt">Stop</button> -->
 </section>
-<!-- 
+ 
 <section class="vol">
 <canvas id="heart1"></canvas>
 </section>
- -->
+
 
 
 <script>
@@ -160,7 +160,7 @@ $(document).ready(function () {
 });
 </script>
 
-<!-- 
+
 <script>
 
 window.requestAnimationFrame =
@@ -189,12 +189,12 @@ var init = function () {
     loaded = true;
     var mobile = window.isDevice;
     var koef = mobile ? 0.5 : 1;
-    var canvas = document.getElementById('heart');
+    var canvas = document.getElementById('heart1');
     var ctx = canvas.getContext('2d');
     var width = canvas.width = koef * innerWidth;
     var height = canvas.height = koef * innerHeight;
     var rand = Math.random;
-    ctx.fillStyle = "rgba(0,0,0,1)";
+    ctx.fillStyle = "rgba(255,250,250,1)";
     ctx.fillRect(0, 0, width, height);
 
     var heartPosition = function (rad) {
@@ -208,7 +208,7 @@ var init = function () {
     window.addEventListener('resize', function () {
         width = canvas.width = koef * innerWidth;
         height = canvas.height = koef * innerHeight;
-        ctx.fillStyle = "rgba(0,0,0,1)";
+        ctx.fillStyle = "rgba(255,250,250,1)";
         ctx.fillRect(0, 0, width, height);
     });
 
@@ -258,7 +258,7 @@ var init = function () {
         var n = -Math.cos(time);
         pulse((1 + n) * .5, (1 + n) * .5);
         time += ((Math.sin(time)) < 0 ? 9 : (n > 0.8) ? .2 : 1) * config.timeDelta;
-        ctx.fillStyle = "rgba(0,0,0,.1)";
+        ctx.fillStyle = "rgba(255,250,250,.1)";
         ctx.fillRect(0, 0, width, height);
         for (i = e.length; i--;) {
             var u = e[i];
@@ -311,5 +311,5 @@ if (s === 'complete' || s === 'loaded' || s === 'interactive') init();
 else document.addEventListener('DOMContentLoaded', init, false);
 
 </script>
- -->
+
 {% endblock %}
