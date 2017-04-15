@@ -128,7 +128,7 @@ canvas {
   	<!-- <button id="bt">Stop</button> -->
 </section>
  
-<section>
+<section style="padding-bottom: 2em;width:  calc(80%); margin: 0 auto;">
 <canvas id="heart1"></canvas>
 </section>
 
@@ -188,7 +188,7 @@ var init = function () {
     if (loaded) return;
     loaded = true;
     var mobile = window.isDevice;
-    var koef = mobile ? 0.3 : 1;
+    var koef = mobile ? 1.3 : 1;
     var canvas = document.getElementById('heart1');
     var ctx = canvas.getContext('2d');
     var width = canvas.width = koef * innerWidth;
@@ -212,10 +212,10 @@ var init = function () {
         ctx.fillRect(0, 0, width, height);
     });
 
-    var traceCount = mobile ? 20 : 50;
+    var traceCount = mobile ? 40 : 50;
     var pointsOrigin = [];
     var i;
-    var dr = mobile ? 0.3 : 0.1;
+    var dr = mobile ? 0.1 : 0.1;
     for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 210, 13, 0, 0));
     for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150, 9, 0, 0));
     for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 90, 5, 0, 0));
