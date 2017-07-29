@@ -132,6 +132,41 @@ canvas {
 <canvas id="heart1"></canvas>
 </section>
 
+<script type="text/javascript" src="https://cdn.bootcss.com/vis/4.20.1/vis.js"></script>
+<link href="https://cdn.bootcss.com/vis/4.20.1/vis-network.min.js" rel="stylesheet" type="text/css">
+
+<section  id="mynetwork" class="vol" style="width: calc(80%);height: 400px;"></section>
+<script type="text/javascript">
+  // create an array with nodes
+  var nodes = new vis.DataSet([
+    {id: 1, label: 'HZL'},
+    {id: 2, label: 'LYJ', color:'pink'}
+  ]);
+
+  // create an array with edges
+  var edges = new vis.DataSet([
+    {from: 1, to: 2,arrows:'to, from',color:{inherit:'both'}}
+  ]);
+
+  // create a network
+  var container = document.getElementById('mynetwork');
+  var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+		    nodes: {
+		    	borderWidth: 2,
+		    	shadow:true
+		    	},
+		    interaction: {
+		    	hover: true,
+		    	shadow:true
+		    	}
+		  }
+  var network = new vis.Network(container, data, options);
+</script>
+
 
 
 <script>
