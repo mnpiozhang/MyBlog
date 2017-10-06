@@ -43,7 +43,20 @@
 			        insertTr();
 			    })
 			    $(':button[name=del]').click(function(){
-			        $(this).parents('tr').remove();
+			    	/*
+			    	var inputformid = $($(this).parents('tr').find("td").children()[0]).attr("id")
+			    	console.log($(this).parents('tr').find("td").children()[0])
+			    	console.log(inputformid)
+			    	if (inputformid == "formitem1") {
+			    		alert("第一个选项不能删");
+			    		//console.log("aaa")
+			    	}
+			    	else {
+			    		$(this).parents('tr').remove();
+			    		//console.log("bbb")
+			    	}
+			    	*/
+			    	$(this).parents('tr').remove();
 			    })
 			})
 			var fm=2;
