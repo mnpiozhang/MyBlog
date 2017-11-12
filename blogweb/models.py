@@ -49,12 +49,20 @@ class AboutMe(models.Model):
     introduce = models.TextField(blank = True,verbose_name = u'简介')
     def __unicode__(self):
         return self.authname
-    
+
+TOYS_STATUS_CHOICES = (
+                      ('d','Down'),
+                      ('u','Up'),
+                      )
+
+
+
 class Toys(models.Model):
     toyname = models.CharField(max_length = 40 ,verbose_name = u'toy栏目名字')
     toyspan = models.CharField(max_length = 20 ,verbose_name = u'toy名字的span')
     toyurl = models.URLField(max_length = 500 ,verbose_name = u'toy名字url')
     createtime = models.DateTimeField(auto_now_add = True,verbose_name = u'创建时间')
+    status = models.CharField(max_length=1, choices=TOYS_STATUS_CHOICES,default='d')
     def __unicode__(self):
         return self.toyname
     class meta:
