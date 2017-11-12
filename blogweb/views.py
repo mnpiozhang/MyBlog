@@ -165,7 +165,7 @@ def tags(request):
 
 def toys(request):
     ret = {'toyObj':None}
-    toyObj = Toys.objects.filter(status='u')
+    toyObj = Toys.objects.filter(status='u').all()
     ret['toyObj'] = toyObj
     return render_to_response('toys.html',ret,context_instance=RequestContext(request))
 
