@@ -124,7 +124,7 @@
 	    
 		$("#randomtoolform").submit(function(e) {
 			var description = $('#formdescription').val();
-			if (description =="a"|description ==null){
+			if (description ==""|description ==null){
 				alert("描述不能为空");
 				return false;
 			}else{
