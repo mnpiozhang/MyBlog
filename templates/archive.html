@@ -27,6 +27,32 @@
         {% endfor %}
 
 </section>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var width = $(this).width();
+	var height = $(this).height();
+	//console.log('width'+width+'-height'+height);
+	if (width < 600 ) {
+		$(".archive-header").css({"font-size":"7px"});
+	}else{
+		$(".archive-header").css({"font-size":"14px"});
+	}
+	$(window).resize(function() {  
+		var width = $(this).width();
+		var height = $(this).height();
+		//console.log('width'+width+'-height'+height);
+		if (width < 600 ) {
+			$(".archive-header").css({"font-size":"7px"});
+		}else{
+			$(".archive-header").css({"font-size":"14px"});
+		}
+	});
+});
+
+</script>
+
+
 {% endfor %}
 {% endblock %}
 
