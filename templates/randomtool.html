@@ -7,7 +7,7 @@
 
 <section class="vol-index" style="margin-top:0;">
 	<div class="vol-header" style="border-left: 5px solid #333;font-size:1.5em;text-align: center;">随机工具--传供选择困难症人群使用</div>
-	<p>为解决某人的选择困难症，(,,• ₃ •,,)，可以使用该小工具。使用方式可以这样:</p>
+	<p>为解决选择困难症--我或者他人(,,• ₃ •,,)，可以使用该小工具。使用方式可以这样:</p>
 	<ul>
 		<li>输入内容共分为两部分，一个是描述，一个是随机项</li>
 		<li>描述就是对该随机行为描述，例如输入"今天晚上吃什么"</li>
@@ -36,41 +36,6 @@
 			        </table>
     			</div>
 			<input style="margin-bottom:1em" class="btn btn-primary btn-xs" type="button" name="add" value="添加随机项">
-
-			<script type="text/javascript">
-			$(function(){
-			    $(':button[name=add]').click(function(){
-			        insertTr();
-			    })
-			    $(':button[name=del]').click(function(){
-			    	/*
-			    	var inputformid = $($(this).parents('tr').find("td").children()[0]).attr("id")
-			    	console.log($(this).parents('tr').find("td").children()[0])
-			    	console.log(inputformid)
-			    	if (inputformid == "formitem1") {
-			    		alert("第一个选项不能删");
-			    		//console.log("aaa")
-			    	}
-			    	else {
-			    		$(this).parents('tr').remove();
-			    		//console.log("bbb")
-			    	}
-			    	*/
-			    	$(this).parents('tr').remove();
-			    })
-			})
-			var fm=2;
-			function insertTr(){
-			    var html='';
-			    html+='<tr><td><input type="text" id="formitem'+fm.toString()+'" name="formitem[]" required="required"></td>';
-			    html+='<td width="25"><input class="btn btn-danger btn-xs" type="button" name="del" value="删除"></td></tr>';
-			    $('#tab').append(html);
-			    $(':button[name=del]').click(function(){
-			        $(this).parents('tr').remove();
-			    })   
-			    fm++;
-			}
-			</script>
 			
 		    <p>
 		      <label>描述</label>
@@ -89,59 +54,99 @@
 	</section>
 	
 	</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		//ajax csrf
+		//using jQuery
+		function getCookie(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie != '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = jQuery.trim(cookies[i]);
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getCookie('csrftoken');
 
 
-<script>
-//using jQuery
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie != '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-var csrftoken = getCookie('csrftoken');
+		function csrfSafeMethod(method) {
+		    // these HTTP methods do not require CSRF protection
+		    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+		}
+		$.ajaxSetup({
+		    beforeSend: function(xhr, settings) {
+		        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+		            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+		        }
+		    }
+		});
+		//ajax csrf end
+		
+		var fm=2;
+		function insertTr(){
+		    var html='';
+		    html+='<tr><td><input type="text" id="formitem'+fm.toString()+'" name="formitem[]" required="required"></td>';
+		    html+='<td width="25"><input class="btn btn-danger btn-xs" type="button" name="del'+fm.toString()+'" value="删除"></td></tr>';
+		    $('#tab').append(html);
+		    $(':button[name=del'+fm.toString()+']').click(function(){
+		        $(this).parents('tr').remove();
+		    })   
+		    fm++;
+		}
+		
+		
+	    $(':button[name=add]').click(function(){
+	        insertTr();
+	    })
+	    
+	    $(':button[name=del]').click(function(){
+	    	var inputformid = $($(this).parents('tr').find("td").children()[0]).attr("id")
+	    	console.log($(this).parents('tr').find("td").children()[0])
+	    	console.log(inputformid)
+	    	if (inputformid == "formitem1") {
+	    		alert("第一个选项不能删");
+	    		//console.log("aaa")
+	    	}
+	    	else {
+	    		$(this).parents('tr').remove();
+	    		//console.log("bbb")
+	    	}
+	    	//$(this).parents('tr').remove();
+	    })
+	    
+		$("#randomtoolform").submit(function(e) {
+			var description = $('#formdescription').val();
+			if (description =="a"|description ==null){
+				alert("描述不能为空");
+				return false;
+			}else{
+			    var url = "/blog/randomtool/";
+				
+			    $.ajax({
+			           type: "POST",
+			           url: url,
+			           data: $("#randomtoolform").serialize(), 
+			           // 如果表单提交成功
+			           success: function(data)
+			           {
+			               alert(data); 
+			           }
+			         });
+			    e.preventDefault();
+			}
 
+		});
+	    
+	})
 
-function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-$.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        }
-    }
-});
-
-$().ready(function() {
-	$("#randomtoolform").submit(function(e) {
-	
-	    var url = "/blog/randomtool/";
-	
-	    $.ajax({
-	           type: "POST",
-	           url: url,
-	           data: $("#randomtoolform").serialize(), 
-	           // 如果表单提交成功
-	           success: function(data)
-	           {
-	               alert(data); 
-	           }
-	         });
-	
-	    e.preventDefault(); 
-	});
-});
 </script>
 
 {% endblock %}
