@@ -38,5 +38,30 @@ conf: 'prod_c93fa97f65f3579c7cb8ee4b12f6984f'
 </script>
 <div class="pagediv">{{ articlecontext }}</div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var width = $(this).width();
+	var height = $(this).height();
+	//console.log('width'+width+'-height'+height);
+	if (width < 600 ) {
+		$(".article-detail").css({"font-size":"7px"});
+	}else{
+		$(".article-detail").css({"font-size":"14px"});
+	}
+	$(window).resize(function() {  
+		var width = $(this).width();
+		var height = $(this).height();
+		//console.log('width'+width+'-height'+height);
+		if (width < 700 ) {
+			$(".article-detail").css({"font-size":"7px"});
+		}else{
+			$(".article-detail").css({"font-size":"14px"});
+		}
+	});
+});
+
+</script>
+
 {% endblock %}
 
