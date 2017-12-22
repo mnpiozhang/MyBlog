@@ -5,7 +5,7 @@
 {% block content %}
 
 {% for k,v in booksdict.items %}
-<section>    
+<section class="books-section">    
     	<div class="archives-wrap">{{ k }}</div>
         <div class="vol-books">
             <div class="books-title">
@@ -17,6 +17,31 @@
             </div>
         </div>
 </section>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var width = $(this).width();
+	var height = $(this).height();
+	//console.log('width'+width+'-height'+height);
+	if (width < 600 ) {
+		$(".books-section").css({"font-size":"1px"});
+	}else{
+		$(".books-section").css({"font-size":"14px"});
+	}
+	$(window).resize(function() {  
+		var width = $(this).width();
+		var height = $(this).height();
+		//console.log('width'+width+'-height'+height);
+		if (width < 700 ) {
+			$(".books-section").css({"font-size":"1px"});
+		}else{
+			$(".books-section").css({"font-size":"14px"});
+		}
+	});
+});
+
+</script>
+
 {% endfor %}
 {% endblock %}
 
