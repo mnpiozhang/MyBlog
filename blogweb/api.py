@@ -56,11 +56,16 @@ class jdBooksApi(View):
                     # i want to trans it 
                     a = get_JD_Top(item,category,effectivetime,topnumber)
                     a = json.loads(a,object_pairs_hook = OrderedDict)
-                    print a
+                    #print a
                     resultList = []
                     for k,v in a.items():
                         resultList.append({u'rank':k,u'url':v[u'url'],u'name':v[u'name'],u'pic':v[u'pic']})
-                    print json.dumps(resultList,ensure_ascii=False,indent=2)
-                    return HttpResponse(json.dumps(resultList,ensure_ascii=False,indent=2),content_type="application/json")
+                    #print json.dumps(resultList,ensure_ascii=False,indent=2)
+                    resp = HttpResponse(json.dumps(resultList,ensure_ascii=False,indent=2),content_type="application/json")
+                    resp["Access-Control-Allow-Headers"] = "content-type"
+                    resp["Access-Control-Allow-Origin"] = "*"
+                    resp["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+                    resp["Access-Control-Max-Age"] = "1000"
+                    return resp
         else:
             return HttpResponse('request error')
