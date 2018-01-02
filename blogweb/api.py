@@ -44,13 +44,13 @@ class jdBooksApi(View):
         try:
             topnumber = int(request.GET.get('topnumber'))
         except:
-            return HttpResponse('topnumber must be number')
+            return HttpResponse('topnumber must be number',status=400)
         if all([item,category,effectivetime,topnumber]):
             if item not in cfg.ITEM.keys() or category not in cfg.CATEGORY.keys() or effectivetime not in cfg.EFFECTIVE_TIME.keys() or topnumber<=0 or topnumber>100:
-                return HttpResponse('request error111')
+                return HttpResponse('request error111',status=400)
             else:
                 if effectivetime != 'day' and (item == 'bc' or item == 'nbc'):
-                    return HttpResponse('热评榜只有24小时内的')
+                    return HttpResponse('热评榜只有24小时内的',status=400)
                 else:
                     #a is json, like {"top1": {"url": "//item.jd.com/12236229.html", "name": "妖猫传（沙门空海·大唐鬼宴 全四册经典套装）", "pic": "//img13.360buyimg.com/n3/jfs/t12199/194/878683607/225186/13de2d7c/5a15320dNdfbe411e.jpg"}, "top2": {"url": "//item.jd.com/12239650.html", "name": "余华作品：活着", "pic": "//img14.360buyimg.com/n3/jfs/t10162/279/1390942739/246693/50c56f9d/59e02214N37418280.jpg"}}
                     # i want to trans it 
@@ -68,4 +68,4 @@ class jdBooksApi(View):
                     #resp["Access-Control-Max-Age"] = "1000"
                     return resp
         else:
-            return HttpResponse('request error')
+            return HttpResponse('request error',status=400)
