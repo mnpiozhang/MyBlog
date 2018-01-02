@@ -62,10 +62,10 @@ class jdBooksApi(View):
                         resultList.append({u'rank':k,u'url':v[u'url'],u'name':v[u'name'],u'pic':v[u'pic']})
                     #print json.dumps(resultList,ensure_ascii=False,indent=2)
                     resp = HttpResponse(json.dumps(resultList,ensure_ascii=False,indent=2),content_type="application/json")
-                    resp["Access-Control-Allow-Headers"] = "content-type"
-                    resp["Access-Control-Allow-Origin"] = "*"
-                    resp["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
-                    resp["Access-Control-Max-Age"] = "1000"
+                    #resp["Access-Control-Allow-Headers"] = "content-type"
+                    #resp["Access-Control-Allow-Origin"] = "*"
+                    #resp["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+                    #resp["Access-Control-Max-Age"] = "1000"
                     return resp
         else:
             return HttpResponse('request error')
