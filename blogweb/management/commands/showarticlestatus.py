@@ -16,5 +16,5 @@ class Command(BaseCommand):
             except Article.DoesNotExist:
                 raise CommandError('article id %s is not exist'%(i))
             #other logical
-            self.stdout.write("id is %s , title is %s"%(article.id , article.title))
+            self.stdout.write("id is %s , title is %s,status is %s"%(article.id , article.title,article.status))
                 
