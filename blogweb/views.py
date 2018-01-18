@@ -82,8 +82,11 @@ def searchtitle(request):
         if search == "":
             ret = {'Search':None,'Hit':0,'Article':None}
             return render_to_response('search.html',ret,context_instance=RequestContext(request))
-
-        result = search_result(search)
+        try:
+            result = search_result(search)
+        except:
+            ret = {'Search':"search error = =",'Hit':0,'Article':None}
+            return render_to_response('search.html',ret,context_instance=RequestContext(request))
         hitcount = result["hits"]["total"]
         if hitcount == 0:
             ret = {'Search':search,'Hit':0,'Article':None}
