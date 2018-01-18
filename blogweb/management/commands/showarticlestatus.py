@@ -13,8 +13,10 @@ class Command(BaseCommand):
         for i in options['aid']:
             try:
                 article = Article.objects.get(id = i)
+                self.stdout.write("id is %s , title is %s,status is %s"%(article.id , article.title,article.status))
             except Article.DoesNotExist:
-                raise CommandError('article id %s is not exist'%(i))
+                #raise CommandError('article id %s is not exist'%(i))
+                self.stdout.write('article id %s is not exist'%(i))
             #other logical
-            self.stdout.write("id is %s , title is %s,status is %s"%(article.id , article.title,article.status))
+            
                 
