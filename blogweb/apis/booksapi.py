@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #_*_ coding:utf-8 _*_
 from django.http import HttpResponse
-from popularbooks.getinfo import get_JD_Top
-from popularbooks import config  as cfg
+from blogweb.popularbooks.getinfo import get_JD_Top
+from blogweb.popularbooks import config  as cfg
 from django.views.generic import View
 import json
 from collections import OrderedDict

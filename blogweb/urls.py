@@ -17,7 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from views import index,showarticle,searchtag,aboutme,archive,tags,itPopularBooks,novelPopularBooks,toys,searchtitle,flashtime,randomtool,dogfood
 from feeds import ArticlesFeed
-from api import jdBooksApi
+from .apis.booksapi import jdBooksApi
+from .apis.commonapi import getAllArticles
 
 urlpatterns = [         
     url(r'^index/(\d*)', index),
@@ -34,5 +35,6 @@ urlpatterns = [
     url(r'^search',searchtitle),
     url(r'^randomtool/',randomtool),
     url(r'^dogfood/',dogfood),
-    url(r'^jdbooks/',jdBooksApi.as_view())
+    url(r'^jdbooks/',jdBooksApi.as_view()),
+    url(r'^getarticle/',getAllArticles.as_view()),
 ]
