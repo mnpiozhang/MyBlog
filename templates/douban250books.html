@@ -1,0 +1,47 @@
+{% extends "suit/suit.html" %}
+{% load djangomarkdown %}
+{% block title %}ItBooksTop20|Cloudhu 个人随笔{% endblock %}
+
+{% block content %}
+
+{% for i in booksdict %}
+<section class="books-section">    
+    	<div class="archives-wrap">{{ i.book_score }}</div>
+        <div class="vol-books">
+            <div class="books-title">
+            	<img src="{{ i.book_img }}" style="float:left" width="90">
+                <div class="archive-title">
+                	<!-- <a class="archive-title-link"  href="{{ v.url }}" >{{ i.book_image }}</a>-->
+                	<p>{{ i.book_name }}</p>
+                </div>
+            </div>
+        </div>
+</section>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var width = $(this).width();
+	var height = $(this).height();
+	//console.log('width'+width+'-height'+height);
+	if (width < 600 ) {
+		$(".books-section").css({"font-size":"xx-small"});
+	}else{
+		$(".books-section").css({"font-size":"14px"});
+	}
+	$(window).resize(function() {  
+		var width = $(this).width();
+		var height = $(this).height();
+		//console.log('width'+width+'-height'+height);
+		if (width < 700 ) {
+			$(".books-section").css({"font-size":"xx-small"});
+		}else{
+			$(".books-section").css({"font-size":"14px"});
+		}
+	});
+});
+
+</script>
+
+{% endfor %}
+{% endblock %}
+

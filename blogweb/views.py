@@ -8,7 +8,7 @@ from common  import  Page,page_div,article_div,search_result
 from collections import OrderedDict
 import popularbooks as pb
 import json
-from utils import random_choice
+from utils import random_choice,getDouBanBooks
 
 # Create your views here.
 def index(request,page=1):
@@ -204,3 +204,13 @@ def randomtool(request):
         return HttpResponse(rendomresult)
     else:
         return render(request,'randomtool.html')
+    
+    
+def douban250books(request):
+    pagelist = [ 0, 25, 50, 75, 100, 125, 150, 175, 200 ,225 ]
+    #pagelist = [ 0, ]
+    url = "https://book.douban.com/top250?start=%s"
+    ret = {'booksdict':None}
+    douban250Dict =  getDouBanBooks(url,pagelist)
+    ret['booksdict'] = douban250Dict
+    return render_to_response('douban250books.html',ret,context_instance=RequestContext(request))

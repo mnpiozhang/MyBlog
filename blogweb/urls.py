@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from views import index,showarticle,searchtag,aboutme,archive,tags,itPopularBooks,novelPopularBooks,toys,searchtitle,flashtime,randomtool,dogfood
+from views import index,showarticle,searchtag,aboutme,archive,tags,itPopularBooks,novelPopularBooks,toys,searchtitle,flashtime,randomtool,dogfood,douban250books
 from feeds import ArticlesFeed
 from .apis.booksapi import jdBooksApi
 from .apis.commonapi import getAllArticles
@@ -37,4 +37,6 @@ urlpatterns = [
     url(r'^dogfood/',dogfood),
     url(r'^jdbooks/',jdBooksApi.as_view()),
     url(r'^getarticle/',getAllArticles.as_view()),
+    url(r'^toys/getdouban250/$',douban250books),
+    
 ]
