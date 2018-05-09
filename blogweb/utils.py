@@ -36,10 +36,14 @@ def doubanrespinfo(url,queue):
             
 def getDouBanBooks(baseurl,pagelist):
     queue = Queue.Queue()
+    threads = []
     for i in pagelist:
         url = baseurl %(i)
         t = Thread(target=doubanrespinfo,args=(url,queue,))
+        threads.append(t)
+    for t in threads:
         t.start()
+    for t in threads:
         t.join()
     result = []
     while  not queue.empty():
