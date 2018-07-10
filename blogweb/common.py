@@ -149,8 +149,8 @@ def search_result(queryStatements):
             }
         }
     }
-    #print queryBody
-    queryResult = es.search(index=indexName,body=queryBody)
+    #print queryBody return search size default 1000
+    queryResult = es.search(index=indexName,body=queryBody,size=1000)
     return queryResult
 
 
