@@ -9,6 +9,7 @@ from collections import OrderedDict
 
 class jdBooksApi(View):
     '''
+    https://niubidian.top/blog/jdbooks/?item=nbs&category=novel&effectivetime=week&topnumber=23
     http://127.0.0.1:8000/blog/jdbooks/?item=nbs&category=novel&effectivetime=week&topnumber=23
     返回的TOP数量可以自己定义1--100
     

@@ -6,6 +6,8 @@ import json
 from collections import OrderedDict
 from blogweb.models import Article,AboutMe,TagInfo,Toys
 
+
+#https://niubidian.top/blog/getarticle/
 class getAllArticles(View):
     def get(self, request):
         returndata = {"code":200,"errMsg":"","body":{}}

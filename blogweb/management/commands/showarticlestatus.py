@@ -4,6 +4,15 @@
 from django.core.management.base import BaseCommand, CommandError
 from blogweb.models import Article,AboutMe,TagInfo,Toys
 
+'''
+(virtualenv)  python manage.py showarticlestatus 5
+id is 5 , title is django应用部署,status is p
+(virtualenv)  python manage.py showarticlestatus 1
+id is 1 , title is Hello World！,status is p
+(virtualenv)  python manage.py showarticlestatus 2
+article id 2 is not exist
+'''
+
 class Command(BaseCommand):
     help = 'command show aritcle status'
     def add_arguments(self,parser):
