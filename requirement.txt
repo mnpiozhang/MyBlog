@@ -1,4 +1,4 @@
-Django==1.8.7
+Django==1.11.29
 duoshuo-python-sdk==0.1
 elasticsearch==5.1.0
 gunicorn==19.4.5
